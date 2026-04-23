@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAT888 — ร้านขายไอดีเกมอันดับ 1</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-brand">NAT888</div>
+      <a href="home.html" class="nav-link active"><span>🏠</span> หน้าแรก</a>
+      <a href="#categories" class="nav-link"><span>🛒</span> สินค้า</a>
+      <a href="#" class="nav-link"><span>💎</span> เติมเงิน</a>
+      <a href="#contact" class="nav-link"><span>📞</span> ติดต่อ</a>
+    </div>
+    <div class="nav-right">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput" />
+      </div>
+      <button class="btn-login" onclick="window.location.href='login.html'">เข้าสู่ระบบ</button>
+      <button class="btn-register" onclick="window.location.href='register.html'">สมัครสมาชิก</button>
+      <div class="user-menu" id="userMenu" style="display:none;">
+        <div class="user-avatar">👤</div>
+        <div class="user-info">
+          <div class="user-name" id="userName"></div>
+          <button class="btn-logout" id="btnLogout">ออกจากระบบ</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-particles" id="heroParticles"></div>
+    <div class="hero-content">
+      <div class="hero-badge">🔥 อันดับ 1 ในไทย</div>
+      <h1 class="hero-title">
+        ร้านขายไอดีเกม<br/>
+        <span class="hero-title-highlight">NAT888</span>
+      </h1>
+      <p class="hero-desc">สกิน • ไอดี • สุ่มกล่อง ราคาถูก ส่งไว ปลอดภัย 100%</p>
+      <div class="hero-actions">
+        <button class="btn-hero-primary" onclick="window.location.href='index.html'">
+          🎰 สุ่มสกินเลย
+        </button>
+        <button class="btn-hero-secondary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
+          🛒 ดูสินค้าทั้งหมด
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="12500">0</div>
+          <div class="hero-stat-label">ลูกค้า</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="98">0</div>
+          <div class="hero-stat-label">% ความพึงพอใจ</div>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <div class="hero-stat-num" data-count="500">0</div>
+          <div class="hero-stat-label">สินค้า</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-box-wrap">
+        <div class="hero-box">
+          <img src="image/11.jpg" alt="กล่องสุ่ม" class="hero-box-img" />
+          <div class="hero-box-glow"></div>
+        </div>
+        <div class="hero-float-badge hero-float-1">🎁 สุ่มได้เลย!</div>
+        <div class="hero-float-badge hero-float-2">💎 Legendary</div>
+        <div class="hero-float-badge hero-float-3">🔥 Hot</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-track" id="tickerTrack">
+      <span>🏆 ผู้ใช้ 8***2 ได้รับ SKIN Legendary</span>
+      <span>💎 ผู้ใช้ 3***9 ได้รับ เพชร 310</span>
+      <span>🔥 ผู้ใช้ 7***1 ได้รับ ไอนัทแปลงร่าง</span>
+      <span>⭐ ผู้ใช้ 5***3 ได้รับ โดนบิดคมๆ</span>
+      <span>🎉 ผู้ใช้ 1***5 ได้รับ เพชร 172</span>
+      <span>👑 ผู้ใช้ k***z ได้รับ SKIN Epic</span>
+      <span>🏆 ผู้ใช้ 8***2 ได้รับ SKIN Legendary</span>
+      <span>💎 ผู้ใช้ 3***9 ได้รับ เพชร 310</span>
+      <span>🔥 ผู้ใช้ 7***1 ได้รับ ไอนัทแปลงร่าง</span>
+      <span>⭐ ผู้ใช้ 5***3 ได้รับ โดนบิดคมๆ</span>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <main class="home-main">
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="home-section">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">หมวดหมู่</div>
+          <h2 class="section-heading">เลือกสินค้าที่ต้องการ</h2>
+        </div>
+      </div>
+      <div class="categories-grid">
+        <a href="index.html" class="cat-card cat-roulette">
+          <div class="cat-icon">🎰</div>
+          <div class="cat-name">สุ่มสกิน</div>
+          <div class="cat-desc">เปิดกล่องสุ่มสกินนัท</div>
+          <div class="cat-badge">HOT</div>
+        </a>
+        <a href="#" class="cat-card cat-skin">
+          <div class="cat-icon">🎮</div>
+          <div class="cat-name">สกินตรง</div>
+          <div class="cat-desc">เลือกสกินที่ต้องการได้เลย</div>
+        </a>
+        <a href="#" class="cat-card cat-id">
+          <div class="cat-icon">🪪</div>
+          <div class="cat-name">ขายไอดี</div>
+          <div class="cat-desc">ไอดีเกมพร้อมใช้งาน</div>
+        </a>
+        <a href="#" class="cat-card cat-diamond">
+          <div class="cat-icon">💎</div>
+          <div class="cat-name">เพชร / เหรียญ</div>
+          <div class="cat-desc">เติมเพชรราคาถูกที่สุด</div>
+          <div class="cat-badge cat-badge-new">NEW</div>
+        </a>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS -->
+    <section class="home-section">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">สินค้าแนะนำ</div>
+          <h2 class="section-heading">ยอดนิยมตอนนี้ 🔥</h2>
+        </div>
+        <a href="index.html" class="btn-see-all">ดูทั้งหมด →</a>
+      </div>
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section class="home-section">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">วิธีซื้อ</div>
+          <h2 class="section-heading">ง่ายแค่ 3 ขั้นตอน</h2>
+        </div>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">1</div>
+          <div class="step-icon">📝</div>
+          <div class="step-title">สมัครสมาชิก</div>
+          <div class="step-desc">สมัครฟรี ใช้เวลาไม่ถึง 1 นาที</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">2</div>
+          <div class="step-icon">🎰</div>
+          <div class="step-title">เลือกสินค้า / สุ่ม</div>
+          <div class="step-desc">เลือกซื้อตรงหรือลองดวงสุ่มกล่อง</div>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step-card">
+          <div class="step-num">3</div>
+          <div class="step-icon">⚡</div>
+          <div class="step-title">รับสินค้าทันที</div>
+          <div class="step-desc">ส่งผ่าน Line / ในเกม ภายใน 5 นาที</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="home-section">
+      <div class="section-header">
+        <div>
+          <div class="section-eyebrow">รีวิว</div>
+          <h2 class="section-heading">ลูกค้าพูดถึงเรา 💬</h2>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"สุ่มได้ Legendary ครั้งแรกเลย ดีใจมากกก ร้านส่งไวมาก"</p>
+          <div class="review-author">
+            <div class="review-avatar">👤</div>
+            <div>
+              <div class="review-name">ผู้ใช้ 8***2</div>
+              <div class="review-date">17 ม.ค. 2568</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"ซื้อไอดีมาหลายครั้งแล้ว ไม่เคยมีปัญหา แอดมินตอบไวมาก"</p>
+          <div class="review-author">
+            <div class="review-avatar">👤</div>
+            <div>
+              <div class="review-name">ผู้ใช้ 3***9</div>
+              <div class="review-date">13 ม.ค. 2568</div>
+            </div>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">⭐⭐⭐⭐⭐</div>
+          <p class="review-text">"ราคาถูกที่สุดในตลาด เพชรได้เยอะมาก แนะนำเลย!"</p>
+          <div class="review-author">
+            <div class="review-avatar">👤</div>
+            <div>
+              <div class="review-name">ผู้ใช้ 5***3</div>
+              <div class="review-date">15 ม.ค. 2568</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT / CTA -->
+    <section id="contact" class="home-section">
+      <div class="cta-card">
+        <div class="cta-glow"></div>
+        <div class="cta-content">
+          <div class="cta-icon">📞</div>
+          <h2 class="cta-title">ติดต่อแอดมิน</h2>
+          <p class="cta-desc">มีคำถาม? ติดต่อเราได้ตลอด 24 ชั่วโมง</p>
+          <div class="cta-channels">
+            <a href="#" class="cta-btn cta-line">
+              <span>💬</span> Line: @nat888
+            </a>
+            <a href="#" class="cta-btn cta-fb">
+              <span>📘</span> Facebook: NAT888 Shop
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>NAT888</strong> — ร้านขายไอดีเกมอันดับ 1</p>
+    <p>ติดต่อ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

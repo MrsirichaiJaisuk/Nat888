@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>สมัครสมาชิก — NAT888</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body class="auth-body">
+
+  <div class="auth-bg"></div>
+
+  <div class="auth-container">
+
+    <a href="index.html" class="auth-logo">NAT888</a>
+    <p class="auth-tagline">ร้านสุ่มไอดีเกมอันดับ 1</p>
+
+    <div class="auth-card">
+      <h2 class="auth-title">สมัครสมาชิก</h2>
+      <p class="auth-sub">สร้างบัญชีฟรี เริ่มสุ่มได้เลย 🎮</p>
+
+      <div class="alert" id="alert"></div>
+
+      <form id="registerForm" autocomplete="off">
+
+        <div class="form-group">
+          <label>ชื่อผู้ใช้ <span class="required">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">👤</span>
+            <input type="text" id="regUsername" placeholder="ตั้งชื่อผู้ใช้ (4-20 ตัวอักษร)" required />
+          </div>
+          <div class="field-hint" id="usernameHint"></div>
+        </div>
+
+        <div class="form-group">
+          <label>อีเมล <span class="required">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">📧</span>
+            <input type="email" id="regEmail" placeholder="example@email.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>เบอร์โทรศัพท์</label>
+          <div class="input-wrap">
+            <span class="input-icon">📱</span>
+            <input type="tel" id="regPhone" placeholder="0812345678 (ไม่บังคับ)" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>รหัสผ่าน <span class="required">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="regPassword" placeholder="อย่างน้อย 6 ตัวอักษร" required />
+            <button type="button" class="toggle-pw" id="togglePw1">👁</button>
+          </div>
+          <div class="pw-strength" id="pwStrength">
+            <div class="pw-bar"><div id="pwBar"></div></div>
+            <span id="pwLabel"></span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>ยืนยันรหัสผ่าน <span class="required">*</span></label>
+          <div class="input-wrap">
+            <span class="input-icon">🔒</span>
+            <input type="password" id="regConfirm" placeholder="กรอกรหัสผ่านอีกครั้ง" required />
+            <button type="button" class="toggle-pw" id="togglePw2">👁</button>
+          </div>
+        </div>
+
+        <div class="form-check">
+          <input type="checkbox" id="agreeTerms" />
+          <label for="agreeTerms">ฉันยอมรับ <a href="#">เงื่อนไขการใช้งาน</a> และ <a href="#">นโยบายความเป็นส่วนตัว</a></label>
+        </div>
+
+        <button type="submit" class="btn-auth" id="registerBtn">
+          <span>สมัครสมาชิก</span>
+        </button>
+
+      </form>
+
+      <div class="auth-divider"><span>หรือ</span></div>
+
+      <p class="auth-switch">
+        มีบัญชีแล้ว?
+        <a href="login.html">เข้าสู่ระบบ →</a>
+      </p>
+    </div>
+
+    <p class="auth-back"><a href="index.html">← กลับหน้าหลัก</a></p>
+
+  </div>
+
+  <script src="auth.js"></script>
+  <script>
+    // Toggle passwords
+    document.getElementById("togglePw1").addEventListener("click", function() {
+      const pw = document.getElementById("regPassword");
+      pw.type = pw.type === "password" ? "text" : "password";
+      this.textContent = pw.type === "password" ? "👁" : "🙈";
+    });
+    document.getElementById("togglePw2").addEventListener("click", function() {
+      const pw = document.getElementById("regConfirm");
+      pw.type = pw.type === "password" ? "text" : "password";
+      this.textContent = pw.type === "password" ? "👁" : "🙈";
+    });
+
+    // Password strength
+    document.getElementById("regPassword").addEventListener("input", function() {
+      const val = this.value;
+      const bar = document.getElementById("pwBar");
+      const label = document.getElementById("pwLabel");
+      let strength = 0;
+      if (val.length >= 6) strength++;
+      if (val.length >= 10) strength++;
+      if (/[A-Z]/.test(val)) strength++;
+      if (/[0-9]/.test(val)) strength++;
+      if (/[^A-Za-z0-9]/.test(val)) strength++;
+
+      const levels = ["", "อ่อนมาก", "อ่อน", "ปานกลาง", "แข็งแรง", "แข็งแรงมาก"];
+      const colors = ["", "#ef5350", "#ff7043", "#ffa726", "#66bb6a", "#26c6da"];
+      bar.style.width = (strength * 20) + "%";
+      bar.style.background = colors[strength] || "#333";
+      label.textContent = val.length > 0 ? levels[strength] || "" : "";
+      label.style.color = colors[strength] || "#aaa";
+    });
+
+    // Username availability check
+    document.getElementById("regUsername").addEventListener("input", function() {
+      const val = this.value.trim();
+      const hint = document.getElementById("usernameHint");
+      if (val.length < 4) {
+        hint.textContent = val.length > 0 ? "ชื่อผู้ใช้ต้องมีอย่างน้อย 4 ตัวอักษร" : "";
+        hint.className = "field-hint error";
+        return;
+      }
+      const users = Auth.getUsers();
+      const taken = users.some(u => u.username.toLowerCase() === val.toLowerCase());
+      hint.textContent = taken ? "❌ ชื่อผู้ใช้นี้ถูกใช้แล้ว" : "✅ ชื่อผู้ใช้นี้ใช้ได้";
+      hint.className = "field-hint " + (taken ? "error" : "success");
+    });
+
+    // Register
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("regUsername").value.trim();
+      const email    = document.getElementById("regEmail").value.trim();
+      const phone    = document.getElementById("regPhone").value.trim();
+      const password = document.getElementById("regPassword").value;
+      const confirm  = document.getElementById("regConfirm").value;
+      const agreed   = document.getElementById("agreeTerms").checked;
+      const btn      = document.getElementById("registerBtn");
+
+      if (!agreed) { showAlert("กรุณายอมรับเงื่อนไขการใช้งาน", "error"); return; }
+      if (password !== confirm) { showAlert("รหัสผ่านไม่ตรงกัน", "error"); return; }
+
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span> กำลังสมัคร...';
+
+      setTimeout(() => {
+        const result = Auth.register({ username, email, phone, password });
+        if (result.success) {
+          showAlert("สมัครสมาชิกสำเร็จ! กำลังพาไปหน้าหลัก...", "success");
+          setTimeout(() => window.location.href = "index.html", 1200);
+        } else {
+          showAlert(result.message, "error");
+          btn.disabled = false;
+          btn.innerHTML = "<span>สมัครสมาชิก</span>";
+        }
+      }, 600);
+    });
+  </script>
+</body>
+</html>

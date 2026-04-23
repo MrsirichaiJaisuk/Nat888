@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>nat888 — สุ่มไอดีเกม</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-brand">NAT888</div>
+      <a href="home.html" class="nav-link active"><span>🏠</span> หน้าแรก</a>
+      <a href="#" class="nav-link"><span>🛒</span> สินค้า</a>
+      <a href="#" class="nav-link"><span>💎</span> เติมเงิน</a>
+      <a href="#" class="nav-link"><span>📞</span> ติดต่อ</a>
+    </div>
+    <div class="nav-right">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" placeholder="ค้นหา..." />
+      </div>
+      <button class="btn-login" onclick="window.location.href='login.html'">เข้าสู่ระบบ</button>
+      <button class="btn-register" onclick="window.location.href='register.html'">สมัครสมาชิก</button>
+      <div class="user-menu" id="userMenu" style="display:none;">
+        <div class="user-avatar">👤</div>
+        <div class="user-info">
+          <div class="user-name" id="userName"></div>
+          <button class="btn-logout" id="btnLogout">ออกจากระบบ</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    <span>🏠 หน้าแรก</span>
+    <span>›</span>
+    <span>หมวดหมู่ทั้งหมด</span>
+    <span>›</span>
+    <span class="active">สุ่มสกินนัท🔥</span>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- PAGE HEADER -->
+    <div class="page-header">
+      <div class="page-header-icon">
+        🔫
+      </div>
+      <div>
+        <div class="page-header-sub">Roulette - สุ่มสินค้า</div>
+        <h1 class="page-header-title">สุ่มสกินนัท🔥</h1>
+      </div>
+    </div>
+
+    <!-- CSGO CASE OPENING -->
+    <div class="case-outer">
+      <!-- เส้นชี้กลาง -->
+      <div class="case-pointer"></div>
+      <!-- แถบเลื่อน -->
+      <div class="case-viewport">
+        <div class="case-track" id="caseTrack">
+          <!-- injected by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- SPIN BUTTON -->
+    <div class="spin-section">
+      <button class="btn-spin" id="spinBtn">🎰 สุ่มสินค้า</button>
+      <div class="spin-note">เข้าสู่ระบบเพื่อสุ่มสินค้า</div>
+    </div>
+
+    <!-- PRIZES TABLE -->
+    <div class="section-card">
+      <div class="section-title"><span>🎁</span> Prizes — สินค้าที่คุณจะได้</div>
+      <div class="prizes-grid" id="prizesGrid"></div>
+    </div>
+
+    <!-- RECENT WINNERS -->
+    <div class="section-card">
+      <div class="section-title"><span>🏆</span> ผู้โชคดีล่าสุด</div>
+      <div class="winners-list" id="winnersList"></div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p><strong>NAT888</strong> — ร้านขายไอดีเกมอันดับ 1</p>
+    <p>ติดต่อ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
+  </footer>
+
+  <!-- MODAL -->
+  <div class="modal-overlay" id="modalOverlay">
+    <div class="modal" id="modal">
+      <div class="modal-icon">🎉</div>
+      <h2 class="modal-title">ยินดีด้วย!</h2>
+      <div class="modal-img-wrap">
+        <img id="modalImg" src="" alt="prize" />
+      </div>
+      <p class="modal-prize" id="modalPrize"></p>
+      <p class="modal-sub">ติดต่อแอดมินเพื่อรับรางวัล</p>
+      <button class="btn-register" onclick="closeModal()">ตกลง</button>
+    </div>
+  </div>
+
+  <script src="auth.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // แสดง user menu ถ้า login แล้ว
+    const session = Auth.getSession();
+    if (session) {
+      document.querySelector(".btn-login").style.display = "none";
+      document.querySelector(".btn-register").style.display = "none";
+      document.getElementById("userMenu").style.display = "flex";
+      document.getElementById("userName").textContent = session.username;
+    }
+    document.getElementById("btnLogout")?.addEventListener("click", () => {
+      Auth.logout();
+      location.reload();
+    });
+  </script>
+</body>
+</html>
