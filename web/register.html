@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>สมัครสมาชิก — NAT888</title>
+  <title>เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ โ€” NAT888</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="auth.css" />
 </head>
@@ -14,47 +14,47 @@
   <div class="auth-container">
 
     <a href="index.html" class="auth-logo">NAT888</a>
-    <p class="auth-tagline">ร้านสุ่มไอดีเกมอันดับ 1</p>
+    <p class="auth-tagline">เธฃเนเธฒเธเธชเธธเนเธกเนเธญเธ”เธตเน€เธเธกเธญเธฑเธเธ”เธฑเธ 1</p>
 
     <div class="auth-card">
-      <h2 class="auth-title">สมัครสมาชิก</h2>
-      <p class="auth-sub">สร้างบัญชีฟรี เริ่มสุ่มได้เลย 🎮</p>
+      <h2 class="auth-title">เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</h2>
+      <p class="auth-sub">เธชเธฃเนเธฒเธเธเธฑเธเธเธตเธเธฃเธต เน€เธฃเธดเนเธกเธชเธธเนเธกเนเธ”เนเน€เธฅเธข ๐ฎ</p>
 
       <div class="alert" id="alert"></div>
 
       <form id="registerForm" autocomplete="off">
 
         <div class="form-group">
-          <label>ชื่อผู้ใช้ <span class="required">*</span></label>
+          <label>เธเธทเนเธญเธเธนเนเนเธเน <span class="required">*</span></label>
           <div class="input-wrap">
-            <span class="input-icon">👤</span>
-            <input type="text" id="regUsername" placeholder="ตั้งชื่อผู้ใช้ (4-20 ตัวอักษร)" required />
+            <span class="input-icon">๐‘ค</span>
+            <input type="text" id="regUsername" placeholder="เธ•เธฑเนเธเธเธทเนเธญเธเธนเนเนเธเน (4-20 เธ•เธฑเธงเธญเธฑเธเธฉเธฃ)" required />
           </div>
           <div class="field-hint" id="usernameHint"></div>
         </div>
 
         <div class="form-group">
-          <label>อีเมล <span class="required">*</span></label>
+          <label>เธญเธตเน€เธกเธฅ <span class="required">*</span></label>
           <div class="input-wrap">
-            <span class="input-icon">📧</span>
+            <span class="input-icon">๐“ง</span>
             <input type="email" id="regEmail" placeholder="example@email.com" required />
           </div>
         </div>
 
         <div class="form-group">
-          <label>เบอร์โทรศัพท์</label>
+          <label>เน€เธเธญเธฃเนเนเธ—เธฃเธจเธฑเธเธ—เน</label>
           <div class="input-wrap">
-            <span class="input-icon">📱</span>
-            <input type="tel" id="regPhone" placeholder="0812345678 (ไม่บังคับ)" />
+            <span class="input-icon">๐“ฑ</span>
+            <input type="tel" id="regPhone" placeholder="0812345678 (เนเธกเนเธเธฑเธเธเธฑเธ)" />
           </div>
         </div>
 
         <div class="form-group">
-          <label>รหัสผ่าน <span class="required">*</span></label>
+          <label>เธฃเธซเธฑเธชเธเนเธฒเธ <span class="required">*</span></label>
           <div class="input-wrap">
-            <span class="input-icon">🔒</span>
-            <input type="password" id="regPassword" placeholder="อย่างน้อย 6 ตัวอักษร" required />
-            <button type="button" class="toggle-pw" id="togglePw1">👁</button>
+            <span class="input-icon">๐”’</span>
+            <input type="password" id="regPassword" placeholder="เธญเธขเนเธฒเธเธเนเธญเธข 6 เธ•เธฑเธงเธญเธฑเธเธฉเธฃ" required />
+            <button type="button" class="toggle-pw" id="togglePw1">๐‘</button>
           </div>
           <div class="pw-strength" id="pwStrength">
             <div class="pw-bar"><div id="pwBar"></div></div>
@@ -63,34 +63,34 @@
         </div>
 
         <div class="form-group">
-          <label>ยืนยันรหัสผ่าน <span class="required">*</span></label>
+          <label>เธขเธทเธเธขเธฑเธเธฃเธซเธฑเธชเธเนเธฒเธ <span class="required">*</span></label>
           <div class="input-wrap">
-            <span class="input-icon">🔒</span>
-            <input type="password" id="regConfirm" placeholder="กรอกรหัสผ่านอีกครั้ง" required />
-            <button type="button" class="toggle-pw" id="togglePw2">👁</button>
+            <span class="input-icon">๐”’</span>
+            <input type="password" id="regConfirm" placeholder="เธเธฃเธญเธเธฃเธซเธฑเธชเธเนเธฒเธเธญเธตเธเธเธฃเธฑเนเธ" required />
+            <button type="button" class="toggle-pw" id="togglePw2">๐‘</button>
           </div>
         </div>
 
         <div class="form-check">
           <input type="checkbox" id="agreeTerms" />
-          <label for="agreeTerms">ฉันยอมรับ <a href="#">เงื่อนไขการใช้งาน</a> และ <a href="#">นโยบายความเป็นส่วนตัว</a></label>
+          <label for="agreeTerms">เธเธฑเธเธขเธญเธกเธฃเธฑเธ <a href="#">เน€เธเธทเนเธญเธเนเธเธเธฒเธฃเนเธเนเธเธฒเธ</a> เนเธฅเธฐ <a href="#">เธเนเธขเธเธฒเธขเธเธงเธฒเธกเน€เธเนเธเธชเนเธงเธเธ•เธฑเธง</a></label>
         </div>
 
         <button type="submit" class="btn-auth" id="registerBtn">
-          <span>สมัครสมาชิก</span>
+          <span>เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</span>
         </button>
 
       </form>
 
-      <div class="auth-divider"><span>หรือ</span></div>
+      <div class="auth-divider"><span>เธซเธฃเธทเธญ</span></div>
 
       <p class="auth-switch">
-        มีบัญชีแล้ว?
-        <a href="login.html">เข้าสู่ระบบ →</a>
+        เธกเธตเธเธฑเธเธเธตเนเธฅเนเธง?
+        <a href="login.html">เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ โ’</a>
       </p>
     </div>
 
-    <p class="auth-back"><a href="index.html">← กลับหน้าหลัก</a></p>
+    <p class="auth-back"><a href="index.html">โ เธเธฅเธฑเธเธซเธเนเธฒเธซเธฅเธฑเธ</a></p>
 
   </div>
 
@@ -100,12 +100,12 @@
     document.getElementById("togglePw1").addEventListener("click", function() {
       const pw = document.getElementById("regPassword");
       pw.type = pw.type === "password" ? "text" : "password";
-      this.textContent = pw.type === "password" ? "👁" : "🙈";
+      this.textContent = pw.type === "password" ? "๐‘" : "๐";
     });
     document.getElementById("togglePw2").addEventListener("click", function() {
       const pw = document.getElementById("regConfirm");
       pw.type = pw.type === "password" ? "text" : "password";
-      this.textContent = pw.type === "password" ? "👁" : "🙈";
+      this.textContent = pw.type === "password" ? "๐‘" : "๐";
     });
 
     // Password strength
@@ -120,7 +120,7 @@
       if (/[0-9]/.test(val)) strength++;
       if (/[^A-Za-z0-9]/.test(val)) strength++;
 
-      const levels = ["", "อ่อนมาก", "อ่อน", "ปานกลาง", "แข็งแรง", "แข็งแรงมาก"];
+      const levels = ["", "เธญเนเธญเธเธกเธฒเธ", "เธญเนเธญเธ", "เธเธฒเธเธเธฅเธฒเธ", "เนเธเนเธเนเธฃเธ", "เนเธเนเธเนเธฃเธเธกเธฒเธ"];
       const colors = ["", "#ef5350", "#ff7043", "#ffa726", "#66bb6a", "#26c6da"];
       bar.style.width = (strength * 20) + "%";
       bar.style.background = colors[strength] || "#333";
@@ -133,13 +133,13 @@
       const val = this.value.trim();
       const hint = document.getElementById("usernameHint");
       if (val.length < 4) {
-        hint.textContent = val.length > 0 ? "ชื่อผู้ใช้ต้องมีอย่างน้อย 4 ตัวอักษร" : "";
+        hint.textContent = val.length > 0 ? "เธเธทเนเธญเธเธนเนเนเธเนเธ•เนเธญเธเธกเธตเธญเธขเนเธฒเธเธเนเธญเธข 4 เธ•เธฑเธงเธญเธฑเธเธฉเธฃ" : "";
         hint.className = "field-hint error";
         return;
       }
       const users = Auth.getUsers();
       const taken = users.some(u => u.username.toLowerCase() === val.toLowerCase());
-      hint.textContent = taken ? "❌ ชื่อผู้ใช้นี้ถูกใช้แล้ว" : "✅ ชื่อผู้ใช้นี้ใช้ได้";
+      hint.textContent = taken ? "โ เธเธทเนเธญเธเธนเนเนเธเนเธเธตเนเธ–เธนเธเนเธเนเนเธฅเนเธง" : "โ… เธเธทเนเธญเธเธนเนเนเธเนเธเธตเนเนเธเนเนเธ”เน";
       hint.className = "field-hint " + (taken ? "error" : "success");
     });
 
@@ -154,24 +154,25 @@
       const agreed   = document.getElementById("agreeTerms").checked;
       const btn      = document.getElementById("registerBtn");
 
-      if (!agreed) { showAlert("กรุณายอมรับเงื่อนไขการใช้งาน", "error"); return; }
-      if (password !== confirm) { showAlert("รหัสผ่านไม่ตรงกัน", "error"); return; }
+      if (!agreed) { showAlert("เธเธฃเธธเธ“เธฒเธขเธญเธกเธฃเธฑเธเน€เธเธทเนเธญเธเนเธเธเธฒเธฃเนเธเนเธเธฒเธ", "error"); return; }
+      if (password !== confirm) { showAlert("เธฃเธซเธฑเธชเธเนเธฒเธเนเธกเนเธ•เธฃเธเธเธฑเธ", "error"); return; }
 
       btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span> กำลังสมัคร...';
+      btn.innerHTML = '<span class="spinner"></span> เธเธณเธฅเธฑเธเธชเธกเธฑเธเธฃ...';
 
       setTimeout(() => {
         const result = Auth.register({ username, email, phone, password });
         if (result.success) {
-          showAlert("สมัครสมาชิกสำเร็จ! กำลังพาไปหน้าหลัก...", "success");
+          showAlert("เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธเธชเธณเน€เธฃเนเธ! เธเธณเธฅเธฑเธเธเธฒเนเธเธซเธเนเธฒเธซเธฅเธฑเธ...", "success");
           setTimeout(() => window.location.href = "index.html", 1200);
         } else {
           showAlert(result.message, "error");
           btn.disabled = false;
-          btn.innerHTML = "<span>สมัครสมาชิก</span>";
+          btn.innerHTML = "<span>เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</span>";
         }
       }, 600);
     });
   </script>
 </body>
 </html>
+

@@ -4,17 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>nat888 — สุ่มไอดีเกม</title>
+  <link rel="icon" type="image/svg+xml" href="image/logo.svg" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="chatbot.css" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-left">
-      <div class="nav-brand">NAT888</div>
-      <a href="home.html" class="nav-link active"><span>🏠</span> หน้าแรก</a>
+      <div class="nav-brand">
+        <img src="image/logo.svg" alt="NAT888" class="nav-logo-img" />
+        <span>NAT888</span>
+      </div>
+      <a href="/" class="nav-link active"><span>🏠</span> หน้าแรก</a>
       <a href="#" class="nav-link"><span>🛒</span> สินค้า</a>
-      <a href="#" class="nav-link"><span>💎</span> เติมเงิน</a>
+      <a href="/market" class="nav-link"><span>🏪</span> ตลาด</a>
+      <a href="/topup" class="nav-link"><span>💎</span> เติมเงิน</a>
       <a href="#" class="nav-link"><span>📞</span> ติดต่อ</a>
     </div>
     <div class="nav-right">
@@ -22,14 +28,18 @@
         <span>🔍</span>
         <input type="text" placeholder="ค้นหา..." />
       </div>
-      <button class="btn-login" onclick="window.location.href='login.html'">เข้าสู่ระบบ</button>
-      <button class="btn-register" onclick="window.location.href='register.html'">สมัครสมาชิก</button>
+      <button class="btn-login" onclick="window.location.href='/login'">เข้าสู่ระบบ</button>
+      <button class="btn-register" onclick="window.location.href='/register'">สมัครสมาชิก</button>
       <div class="user-menu" id="userMenu" style="display:none;">
         <div class="user-avatar">👤</div>
         <div class="user-info">
           <div class="user-name" id="userName"></div>
-          <button class="btn-logout" id="btnLogout">ออกจากระบบ</button>
+          <div class="user-credits">💰 <span id="userCredits">0</span> เครดิต</div>
         </div>
+        <button class="btn-bag" id="btnBag" onclick="openInventory()" title="กระเป๋าของฉัน">
+          🎒 <span class="inv-badge" id="invBadge" style="display:none;">0</span>
+        </button>
+        <button class="btn-logout" id="btnLogout">ออก</button>
       </div>
     </div>
   </nav>
@@ -49,7 +59,7 @@
     <!-- PAGE HEADER -->
     <div class="page-header">
       <div class="page-header-icon">
-        🔫
+        🎁
       </div>
       <div>
         <div class="page-header-sub">Roulette - สุ่มสินค้า</div>
@@ -71,8 +81,9 @@
 
     <!-- SPIN BUTTON -->
     <div class="spin-section">
-      <button class="btn-spin" id="spinBtn">🎰 สุ่มสินค้า</button>
-      <div class="spin-note">เข้าสู่ระบบเพื่อสุ่มสินค้า</div>
+      <button class="btn-spin" id="spinBtn">🎰 สุ่มสินค้า (10 เครดิต)</button>
+      <div class="spin-note" id="spinNote">เข้าสู่ระบบเพื่อสุ่มสินค้า</div>
+      <button class="btn-topup" id="btnTopup" style="display:none;" onclick="showTopupModal()">💰 เติมเครดิต</button>
     </div>
 
     <!-- PRIZES TABLE -->
@@ -95,6 +106,52 @@
     <p>ติดต่อ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
   </footer>
 
+  <!-- INVENTORY MODAL -->
+  <div class="modal-overlay" id="inventoryOverlay">
+    <div class="modal inventory-modal">
+      <div class="inv-header">
+        <div>
+          <div class="modal-icon" style="font-size:32px;margin:0;">🎒</div>
+        </div>
+        <div style="flex:1;">
+          <h2 class="modal-title" style="margin:0;font-size:20px;">กระเป๋าของฉัน</h2>
+          <div id="invCount" style="font-size:12px;color:var(--muted);margin-top:2px;">0 ชิ้น</div>
+        </div>
+        <button class="chat-header-close" onclick="closeInventory()" style="font-size:20px;color:#8888aa;">✕</button>
+      </div>
+      <div class="inv-grid" id="invGrid">
+        <div class="inv-empty" id="invEmpty">
+          <div style="font-size:48px;margin-bottom:12px;">📦</div>
+          <div>ยังไม่มีสินค้าในกระเป๋า</div>
+          <div style="font-size:13px;color:var(--muted);margin-top:6px;">ลองสุ่มกล่องดูนะครับ!</div>
+        </div>
+      </div>
+      <div style="padding:16px;border-top:1px solid var(--border);text-align:center;position:relative;z-index:1;">
+        <button class="btn-register" onclick="closeInventory()">ปิด</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPUP MODAL -->
+  <div class="modal-overlay" id="topupOverlay">
+    <div class="modal" id="topupModal">
+      <div class="modal-icon">💰</div>
+      <h2 class="modal-title" style="color:#ffd700;">เติมเครดิต</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px;position:relative;z-index:1;">
+        ติดต่อแอดมินเพื่อเติมเครดิต<br/>หรือทดลองใช้งาน (Demo)
+      </p>
+      <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;position:relative;z-index:1;">
+        <button class="btn-register" onclick="demoAddCredits(50)">+50 เครดิต (Demo)</button>
+        <button class="btn-register" onclick="demoAddCredits(100)">+100 เครดิต (Demo)</button>
+      </div>
+      <div style="position:relative;z-index:1;margin-bottom:16px;">
+        <p style="font-size:13px;color:var(--muted);">ช่องทางชำระเงินจริง</p>
+        <p style="font-size:14px;color:#fff;margin-top:6px;">💬 Line: <strong>@nat888</strong></p>
+      </div>
+      <button class="btn-login" style="width:100%;" onclick="closeTopupModal()">ปิด</button>
+    </div>
+  </div>
+
   <!-- MODAL -->
   <div class="modal-overlay" id="modalOverlay">
     <div class="modal" id="modal">
@@ -111,19 +168,122 @@
 
   <script src="auth.js"></script>
   <script src="app.js"></script>
+  <script src="chatbot.js"></script>
   <script>
-    // แสดง user menu ถ้า login แล้ว
     const session = Auth.getSession();
     if (session) {
       document.querySelector(".btn-login").style.display = "none";
       document.querySelector(".btn-register").style.display = "none";
       document.getElementById("userMenu").style.display = "flex";
       document.getElementById("userName").textContent = session.username;
+      document.getElementById("btnTopup").style.display = "inline-block";
+      updateCreditsDisplay();
+      updateSpinNote();
     }
     document.getElementById("btnLogout")?.addEventListener("click", () => {
       Auth.logout();
       location.reload();
     });
+
+    function updateCreditsDisplay() {
+      const s = Auth.getSession();
+      if (!s) return;
+      const bal = Auth.getBalance(s.userId);
+      const display = bal === Infinity ? "∞" : bal;
+      document.getElementById("userCredits").textContent = display;
+      // แสดง badge admin
+      const nameEl = document.getElementById("userName");
+      if (s.isAdmin) {
+        nameEl.innerHTML = `${s.username} <span style="background:#e53935;color:#fff;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700;">ADMIN</span>`;
+      } else {
+        nameEl.textContent = s.username;
+      }
+      updateSpinNote();
+    }
+
+    function updateSpinNote() {
+      const s = Auth.getSession();
+      const note = document.getElementById("spinNote");
+      if (!s) { note.textContent = "เข้าสู่ระบบเพื่อสุ่มสินค้า"; return; }
+      if (s.isAdmin) {
+        note.innerHTML = `<span style="color:#ffd700;">👑 Admin — เครดิตไม่อั้น</span>`;
+        return;
+      }
+      const bal = Auth.getBalance(s.userId);
+      if (bal < 10) {
+        note.innerHTML = `<span style="color:#ef5350;">เครดิตไม่พอ — ต้องการ 10 เครดิต (มี ${bal} เครดิต)</span>`;
+      } else {
+        note.innerHTML = `<span style="color:#66bb6a;">มี ${bal} เครดิต — พร้อมสุ่ม!</span>`;
+      }
+    }
+
+    function showTopupModal() {
+      document.getElementById("topupOverlay").classList.add("show");
+    }
+
+    function closeTopupModal() {
+      document.getElementById("topupOverlay").classList.remove("show");
+      updateCreditsDisplay();
+    }
+    function demoAddCredits(amount) {
+      const s = Auth.getSession();
+      if (!s) return;
+      Auth.addCredits(s.userId, amount);
+      updateCreditsDisplay();
+      closeTopupModal();
+    }
+
+    // ===== INVENTORY =====
+    const RARITY_COLOR_MAP = {
+      common: "#aaa", uncommon: "#81c784", rare: "#64b5f6",
+      epic: "#ce93d8", legendary: "#ffd700"
+    };
+
+    function openInventory() {
+      const s = Auth.getSession();
+      if (!s) return;
+      const inv = Auth.getInventory(s.userId);
+      const grid = document.getElementById("invGrid");
+      document.getElementById("invCount").textContent = inv.length + " ชิ้น";
+      Array.from(grid.children).forEach(c => { if (c.id !== "invEmpty") c.remove(); });
+      if (inv.length === 0) {
+        document.getElementById("invEmpty").style.display = "flex";
+      } else {
+        document.getElementById("invEmpty").style.display = "none";
+        inv.forEach(item => {
+          const card = document.createElement("div");
+          card.className = "inv-card";
+          const d = new Date(parseInt(item.uid));
+          const dateStr = d.getDate() + "/" + (d.getMonth()+1) + "/" + (d.getFullYear()+543);
+          card.innerHTML = `
+            <div class="inv-card-img">
+              <img src="${item.img}" alt="${item.name}" />
+              <span class="inv-rarity" style="color:${RARITY_COLOR_MAP[item.rarity]||'#aaa'}">${item.rarity}</span>
+            </div>
+            <div class="inv-card-name">${item.emoji} ${item.name}</div>
+            <div class="inv-card-date">${dateStr}</div>
+            <button class="inv-card-del" onclick="removeItem('${item.uid}')" title="ลบออก">🗑</button>
+          `;
+          grid.appendChild(card);
+        });
+      }
+      document.getElementById("inventoryOverlay").classList.add("show");
+    }
+
+    function closeInventory() {
+      document.getElementById("inventoryOverlay").classList.remove("show");
+    }
+
+    function removeItem(uid) {
+      const s = Auth.getSession();
+      if (!s) return;
+      if (!confirm("ลบสินค้าชิ้นนี้ออกจากกระเป๋า?")) return;
+      Auth.removeFromInventory(s.userId, uid);
+      openInventory();
+      updateInventoryBadge();
+    }
+
+    if (session) { updateInventoryBadge(); }
   </script>
 </body>
 </html>

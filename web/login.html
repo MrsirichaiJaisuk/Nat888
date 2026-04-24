@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>เข้าสู่ระบบ — NAT888</title>
+  <title>เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ โ€” NAT888</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="auth.css" />
 </head>
@@ -15,49 +15,49 @@
 
     <!-- Logo -->
     <a href="index.html" class="auth-logo">NAT888</a>
-    <p class="auth-tagline">ร้านสุ่มไอดีเกมอันดับ 1</p>
+    <p class="auth-tagline">เธฃเนเธฒเธเธชเธธเนเธกเนเธญเธ”เธตเน€เธเธกเธญเธฑเธเธ”เธฑเธ 1</p>
 
     <!-- Card -->
     <div class="auth-card">
-      <h2 class="auth-title">เข้าสู่ระบบ</h2>
-      <p class="auth-sub">ยินดีต้อนรับกลับมา 👋</p>
+      <h2 class="auth-title">เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ</h2>
+      <p class="auth-sub">เธขเธดเธเธ”เธตเธ•เนเธญเธเธฃเธฑเธเธเธฅเธฑเธเธกเธฒ ๐‘</p>
 
       <div class="alert" id="alert"></div>
 
       <form id="loginForm" autocomplete="off">
 
         <div class="form-group">
-          <label>ชื่อผู้ใช้ หรือ อีเมล</label>
+          <label>เธเธทเนเธญเธเธนเนเนเธเน เธซเธฃเธทเธญ เธญเธตเน€เธกเธฅ</label>
           <div class="input-wrap">
-            <span class="input-icon">👤</span>
-            <input type="text" id="loginIdentifier" placeholder="กรอกชื่อผู้ใช้หรืออีเมล" required />
+            <span class="input-icon">๐‘ค</span>
+            <input type="text" id="loginIdentifier" placeholder="เธเธฃเธญเธเธเธทเนเธญเธเธนเนเนเธเนเธซเธฃเธทเธญเธญเธตเน€เธกเธฅ" required />
           </div>
         </div>
 
         <div class="form-group">
-          <label>รหัสผ่าน</label>
+          <label>เธฃเธซเธฑเธชเธเนเธฒเธ</label>
           <div class="input-wrap">
-            <span class="input-icon">🔒</span>
-            <input type="password" id="loginPassword" placeholder="กรอกรหัสผ่าน" required />
-            <button type="button" class="toggle-pw" id="togglePw">👁</button>
+            <span class="input-icon">๐”’</span>
+            <input type="password" id="loginPassword" placeholder="เธเธฃเธญเธเธฃเธซเธฑเธชเธเนเธฒเธ" required />
+            <button type="button" class="toggle-pw" id="togglePw">๐‘</button>
           </div>
         </div>
 
         <button type="submit" class="btn-auth" id="loginBtn">
-          <span>เข้าสู่ระบบ</span>
+          <span>เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ</span>
         </button>
 
       </form>
 
-      <div class="auth-divider"><span>หรือ</span></div>
+      <div class="auth-divider"><span>เธซเธฃเธทเธญ</span></div>
 
       <p class="auth-switch">
-        ยังไม่มีบัญชี?
-        <a href="register.html">สมัครสมาชิกฟรี →</a>
+        เธขเธฑเธเนเธกเนเธกเธตเธเธฑเธเธเธต?
+        <a href="register.html">เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธเธเธฃเธต โ’</a>
       </p>
     </div>
 
-    <p class="auth-back"><a href="index.html">← กลับหน้าหลัก</a></p>
+    <p class="auth-back"><a href="index.html">โ เธเธฅเธฑเธเธซเธเนเธฒเธซเธฅเธฑเธ</a></p>
 
   </div>
 
@@ -67,7 +67,7 @@
     document.getElementById("togglePw").addEventListener("click", function() {
       const pw = document.getElementById("loginPassword");
       pw.type = pw.type === "password" ? "text" : "password";
-      this.textContent = pw.type === "password" ? "👁" : "🙈";
+      this.textContent = pw.type === "password" ? "๐‘" : "๐";
     });
 
     // Login
@@ -78,20 +78,21 @@
       const btn        = document.getElementById("loginBtn");
 
       btn.disabled = true;
-      btn.innerHTML = '<span class="spinner"></span> กำลังเข้าสู่ระบบ...';
+      btn.innerHTML = '<span class="spinner"></span> เธเธณเธฅเธฑเธเน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ...';
 
       setTimeout(() => {
         const result = Auth.login(identifier, password);
         if (result.success) {
-          showAlert("เข้าสู่ระบบสำเร็จ! กำลังพาไปหน้าหลัก...", "success");
+          showAlert("เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธเธชเธณเน€เธฃเนเธ! เธเธณเธฅเธฑเธเธเธฒเนเธเธซเธเนเธฒเธซเธฅเธฑเธ...", "success");
           setTimeout(() => window.location.href = "index.html", 1000);
         } else {
           showAlert(result.message, "error");
           btn.disabled = false;
-          btn.innerHTML = "<span>เข้าสู่ระบบ</span>";
+          btn.innerHTML = "<span>เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ</span>";
         }
       }, 600);
     });
   </script>
 </body>
 </html>
+

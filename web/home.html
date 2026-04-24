@@ -1,35 +1,41 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NAT888 — ร้านขายไอดีเกมอันดับ 1</title>
+  <title>NAT888 โ€” เธฃเนเธฒเธเธเธฒเธขเนเธญเธ”เธตเน€เธเธกเธญเธฑเธเธ”เธฑเธ 1</title>
+  <link rel="icon" type="image/svg+xml" href="image/logo.svg" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="home.css" />
+  <link rel="stylesheet" href="chatbot.css" />
 </head>
 <body>
 
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-left">
-      <div class="nav-brand">NAT888</div>
-      <a href="home.html" class="nav-link active"><span>🏠</span> หน้าแรก</a>
-      <a href="#categories" class="nav-link"><span>🛒</span> สินค้า</a>
-      <a href="#" class="nav-link"><span>💎</span> เติมเงิน</a>
-      <a href="#contact" class="nav-link"><span>📞</span> ติดต่อ</a>
+      <div class="nav-brand">
+        <img src="image/logo.svg" alt="NAT888" class="nav-logo-img" />
+        <span>NAT888</span>
+      </div>
+      <a href="/" class="nav-link active"><span>๐ </span> เธซเธเนเธฒเนเธฃเธ</a>
+      <a href="#categories" class="nav-link"><span>๐’</span> เธชเธดเธเธเนเธฒ</a>
+      <a href="/market" class="nav-link"><span>๐ช</span> เธ•เธฅเธฒเธ”</a>
+      <a href="/topup" class="nav-link"><span>๐’</span> เน€เธ•เธดเธกเน€เธเธดเธ</a>
+      <a href="#contact" class="nav-link"><span>๐“</span> เธ•เธดเธ”เธ•เนเธญ</a>
     </div>
     <div class="nav-right">
       <div class="search-box">
-        <span>🔍</span>
-        <input type="text" placeholder="ค้นหาสินค้า..." id="searchInput" />
+        <span>๐”</span>
+        <input type="text" placeholder="เธเนเธเธซเธฒเธชเธดเธเธเนเธฒ..." id="searchInput" />
       </div>
-      <button class="btn-login" onclick="window.location.href='login.html'">เข้าสู่ระบบ</button>
-      <button class="btn-register" onclick="window.location.href='register.html'">สมัครสมาชิก</button>
+      <button class="btn-login" onclick="window.location.href='/login'">เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ</button>
+      <button class="btn-register" onclick="window.location.href='/register'">เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</button>
       <div class="user-menu" id="userMenu" style="display:none;">
-        <div class="user-avatar">👤</div>
+        <div class="user-avatar">๐‘ค</div>
         <div class="user-info">
           <div class="user-name" id="userName"></div>
-          <button class="btn-logout" id="btnLogout">ออกจากระบบ</button>
+          <button class="btn-logout" id="btnLogout">เธญเธญเธเธเธฒเธเธฃเธฐเธเธ</button>
         </div>
       </div>
     </div>
@@ -40,46 +46,46 @@
     <div class="hero-bg"></div>
     <div class="hero-particles" id="heroParticles"></div>
     <div class="hero-content">
-      <div class="hero-badge">🔥 อันดับ 1 ในไทย</div>
+      <div class="hero-badge">๐”ฅ เธญเธฑเธเธ”เธฑเธ 1 เนเธเนเธ—เธข</div>
       <h1 class="hero-title">
-        ร้านขายไอดีเกม<br/>
+        เธฃเนเธฒเธเธเธฒเธขเนเธญเธ”เธตเน€เธเธก<br/>
         <span class="hero-title-highlight">NAT888</span>
       </h1>
-      <p class="hero-desc">สกิน • ไอดี • สุ่มกล่อง ราคาถูก ส่งไว ปลอดภัย 100%</p>
+      <p class="hero-desc">เธชเธเธดเธ โ€ข เนเธญเธ”เธต โ€ข เธชเธธเนเธกเธเธฅเนเธญเธ เธฃเธฒเธเธฒเธ–เธนเธ เธชเนเธเนเธง เธเธฅเธญเธ”เธ เธฑเธข 100%</p>
       <div class="hero-actions">
-        <button class="btn-hero-primary" onclick="window.location.href='index.html'">
-          🎰 สุ่มสกินเลย
+        <button class="btn-hero-primary" onclick="window.location.href='/spin'">
+          ๐ฐ เธชเธธเนเธกเธชเธเธดเธเน€เธฅเธข
         </button>
         <button class="btn-hero-secondary" onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})">
-          🛒 ดูสินค้าทั้งหมด
+          ๐’ เธ”เธนเธชเธดเธเธเนเธฒเธ—เธฑเนเธเธซเธกเธ”
         </button>
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="hero-stat-num" data-count="12500">0</div>
-          <div class="hero-stat-label">ลูกค้า</div>
+          <div class="hero-stat-label">เธฅเธนเธเธเนเธฒ</div>
         </div>
         <div class="hero-stat-divider"></div>
         <div class="hero-stat">
           <div class="hero-stat-num" data-count="98">0</div>
-          <div class="hero-stat-label">% ความพึงพอใจ</div>
+          <div class="hero-stat-label">% เธเธงเธฒเธกเธเธถเธเธเธญเนเธ</div>
         </div>
         <div class="hero-stat-divider"></div>
         <div class="hero-stat">
           <div class="hero-stat-num" data-count="500">0</div>
-          <div class="hero-stat-label">สินค้า</div>
+          <div class="hero-stat-label">เธชเธดเธเธเนเธฒ</div>
         </div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-box-wrap">
         <div class="hero-box">
-          <img src="image/11.jpg" alt="กล่องสุ่ม" class="hero-box-img" />
+          <img src="image/11.jpg" alt="เธเธฅเนเธญเธเธชเธธเนเธก" class="hero-box-img" />
           <div class="hero-box-glow"></div>
         </div>
-        <div class="hero-float-badge hero-float-1">🎁 สุ่มได้เลย!</div>
-        <div class="hero-float-badge hero-float-2">💎 Legendary</div>
-        <div class="hero-float-badge hero-float-3">🔥 Hot</div>
+        <div class="hero-float-badge hero-float-1">๐ เธชเธธเนเธกเนเธ”เนเน€เธฅเธข!</div>
+        <div class="hero-float-badge hero-float-2">๐’ Legendary</div>
+        <div class="hero-float-badge hero-float-3">๐”ฅ Hot</div>
       </div>
     </div>
   </section>
@@ -87,16 +93,16 @@
   <!-- MARQUEE TICKER -->
   <div class="ticker-wrap">
     <div class="ticker-track" id="tickerTrack">
-      <span>🏆 ผู้ใช้ 8***2 ได้รับ SKIN Legendary</span>
-      <span>💎 ผู้ใช้ 3***9 ได้รับ เพชร 310</span>
-      <span>🔥 ผู้ใช้ 7***1 ได้รับ ไอนัทแปลงร่าง</span>
-      <span>⭐ ผู้ใช้ 5***3 ได้รับ โดนบิดคมๆ</span>
-      <span>🎉 ผู้ใช้ 1***5 ได้รับ เพชร 172</span>
-      <span>👑 ผู้ใช้ k***z ได้รับ SKIN Epic</span>
-      <span>🏆 ผู้ใช้ 8***2 ได้รับ SKIN Legendary</span>
-      <span>💎 ผู้ใช้ 3***9 ได้รับ เพชร 310</span>
-      <span>🔥 ผู้ใช้ 7***1 ได้รับ ไอนัทแปลงร่าง</span>
-      <span>⭐ ผู้ใช้ 5***3 ได้รับ โดนบิดคมๆ</span>
+      <span>๐ เธเธฒเธขเธชเธกเธเธฒเธข เนเธเธ”เธต เนเธ”เนเธฃเธฑเธ SKIN Legendary</span>
+      <span>๐’ เธเธฒเธขเธเธดเธขเธฐ เนเธเธเธ”เธต เนเธ”เนเธฃเธฑเธ เน€เธเธเธฃ 310</span>
+      <span>๐”ฅ เธ.เธช.เนเธเธฃเธงเธฒ เธกเธตเธชเธธเธ เนเธ”เนเธฃเธฑเธ เนเธญเธเธฑเธ—เนเธเธฅเธเธฃเนเธฒเธ</span>
+      <span>โญ เธเธฒเธขเธเธดเธ•เธ•เธด เน€เธเนเธเธกเธฒเธ เนเธ”เนเธฃเธฑเธ เนเธ”เธเธเธดเธ”เธเธกเน</span>
+      <span>๐ เธ.เธช.เธกเธดเธเธ•เธฃเธฒ เธชเธงเธขเธเธฒเธก เนเธ”เนเธฃเธฑเธ เน€เธเธเธฃ 172</span>
+      <span>๐‘‘ เธเธฒเธขเธเธเธเธฃ เธกเธฑเนเธเธกเธต เนเธ”เนเธฃเธฑเธ SKIN Epic</span>
+      <span>๐ เธเธฒเธขเธชเธกเธเธฒเธข เนเธเธ”เธต เนเธ”เนเธฃเธฑเธ SKIN Legendary</span>
+      <span>๐’ เธเธฒเธขเธเธดเธขเธฐ เนเธเธเธ”เธต เนเธ”เนเธฃเธฑเธ เน€เธเธเธฃ 310</span>
+      <span>๐”ฅ เธ.เธช.เนเธเธฃเธงเธฒ เธกเธตเธชเธธเธ เนเธ”เนเธฃเธฑเธ เนเธญเธเธฑเธ—เนเธเธฅเธเธฃเนเธฒเธ</span>
+      <span>โญ เธเธฒเธขเธเธดเธ•เธ•เธด เน€เธเนเธเธกเธฒเธ เนเธ”เนเธฃเธฑเธ เนเธ”เธเธเธดเธ”เธเธกเน</span>
     </div>
   </div>
 
@@ -107,31 +113,31 @@
     <section id="categories" class="home-section">
       <div class="section-header">
         <div>
-          <div class="section-eyebrow">หมวดหมู่</div>
-          <h2 class="section-heading">เลือกสินค้าที่ต้องการ</h2>
+          <div class="section-eyebrow">เธซเธกเธงเธ”เธซเธกเธนเน</div>
+          <h2 class="section-heading">เน€เธฅเธทเธญเธเธชเธดเธเธเนเธฒเธ—เธตเนเธ•เนเธญเธเธเธฒเธฃ</h2>
         </div>
       </div>
       <div class="categories-grid">
         <a href="index.html" class="cat-card cat-roulette">
-          <div class="cat-icon">🎰</div>
-          <div class="cat-name">สุ่มสกิน</div>
-          <div class="cat-desc">เปิดกล่องสุ่มสกินนัท</div>
+          <div class="cat-icon">๐ฐ</div>
+          <div class="cat-name">เธชเธธเนเธกเธชเธเธดเธ</div>
+          <div class="cat-desc">เน€เธเธดเธ”เธเธฅเนเธญเธเธชเธธเนเธกเธชเธเธดเธเธเธฑเธ—</div>
           <div class="cat-badge">HOT</div>
         </a>
         <a href="#" class="cat-card cat-skin">
-          <div class="cat-icon">🎮</div>
-          <div class="cat-name">สกินตรง</div>
-          <div class="cat-desc">เลือกสกินที่ต้องการได้เลย</div>
+          <div class="cat-icon">๐ฎ</div>
+          <div class="cat-name">เธชเธเธดเธเธ•เธฃเธ</div>
+          <div class="cat-desc">เน€เธฅเธทเธญเธเธชเธเธดเธเธ—เธตเนเธ•เนเธญเธเธเธฒเธฃเนเธ”เนเน€เธฅเธข</div>
         </a>
         <a href="#" class="cat-card cat-id">
-          <div class="cat-icon">🪪</div>
-          <div class="cat-name">ขายไอดี</div>
-          <div class="cat-desc">ไอดีเกมพร้อมใช้งาน</div>
+          <div class="cat-icon">๐ชช</div>
+          <div class="cat-name">เธเธฒเธขเนเธญเธ”เธต</div>
+          <div class="cat-desc">เนเธญเธ”เธตเน€เธเธกเธเธฃเนเธญเธกเนเธเนเธเธฒเธ</div>
         </a>
         <a href="#" class="cat-card cat-diamond">
-          <div class="cat-icon">💎</div>
-          <div class="cat-name">เพชร / เหรียญ</div>
-          <div class="cat-desc">เติมเพชรราคาถูกที่สุด</div>
+          <div class="cat-icon">๐’</div>
+          <div class="cat-name">เน€เธเธเธฃ / เน€เธซเธฃเธตเธขเธ</div>
+          <div class="cat-desc">เน€เธ•เธดเธกเน€เธเธเธฃเธฃเธฒเธเธฒเธ–เธนเธเธ—เธตเนเธชเธธเธ”</div>
           <div class="cat-badge cat-badge-new">NEW</div>
         </a>
       </div>
@@ -141,10 +147,10 @@
     <section class="home-section">
       <div class="section-header">
         <div>
-          <div class="section-eyebrow">สินค้าแนะนำ</div>
-          <h2 class="section-heading">ยอดนิยมตอนนี้ 🔥</h2>
+          <div class="section-eyebrow">เธชเธดเธเธเนเธฒเนเธเธฐเธเธณ</div>
+          <h2 class="section-heading">เธขเธญเธ”เธเธดเธขเธกเธ•เธญเธเธเธตเน ๐”ฅ</h2>
         </div>
-        <a href="index.html" class="btn-see-all">ดูทั้งหมด →</a>
+        <a href="index.html" class="btn-see-all">เธ”เธนเธ—เธฑเนเธเธซเธกเธ” โ’</a>
       </div>
       <div class="products-grid" id="productsGrid"></div>
     </section>
@@ -153,30 +159,30 @@
     <section class="home-section">
       <div class="section-header">
         <div>
-          <div class="section-eyebrow">วิธีซื้อ</div>
-          <h2 class="section-heading">ง่ายแค่ 3 ขั้นตอน</h2>
+          <div class="section-eyebrow">เธงเธดเธเธตเธเธทเนเธญ</div>
+          <h2 class="section-heading">เธเนเธฒเธขเนเธเน 3 เธเธฑเนเธเธ•เธญเธ</h2>
         </div>
       </div>
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-num">1</div>
-          <div class="step-icon">📝</div>
-          <div class="step-title">สมัครสมาชิก</div>
-          <div class="step-desc">สมัครฟรี ใช้เวลาไม่ถึง 1 นาที</div>
+          <div class="step-icon">๐“</div>
+          <div class="step-title">เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</div>
+          <div class="step-desc">เธชเธกเธฑเธเธฃเธเธฃเธต เนเธเนเน€เธงเธฅเธฒเนเธกเนเธ–เธถเธ 1 เธเธฒเธ—เธต</div>
         </div>
-        <div class="step-arrow">→</div>
+        <div class="step-arrow">โ’</div>
         <div class="step-card">
           <div class="step-num">2</div>
-          <div class="step-icon">🎰</div>
-          <div class="step-title">เลือกสินค้า / สุ่ม</div>
-          <div class="step-desc">เลือกซื้อตรงหรือลองดวงสุ่มกล่อง</div>
+          <div class="step-icon">๐ฐ</div>
+          <div class="step-title">เน€เธฅเธทเธญเธเธชเธดเธเธเนเธฒ / เธชเธธเนเธก</div>
+          <div class="step-desc">เน€เธฅเธทเธญเธเธเธทเนเธญเธ•เธฃเธเธซเธฃเธทเธญเธฅเธญเธเธ”เธงเธเธชเธธเนเธกเธเธฅเนเธญเธ</div>
         </div>
-        <div class="step-arrow">→</div>
+        <div class="step-arrow">โ’</div>
         <div class="step-card">
           <div class="step-num">3</div>
-          <div class="step-icon">⚡</div>
-          <div class="step-title">รับสินค้าทันที</div>
-          <div class="step-desc">ส่งผ่าน Line / ในเกม ภายใน 5 นาที</div>
+          <div class="step-icon">โก</div>
+          <div class="step-title">เธฃเธฑเธเธชเธดเธเธเนเธฒเธ—เธฑเธเธ—เธต</div>
+          <div class="step-desc">เธชเนเธเธเนเธฒเธ Line / เนเธเน€เธเธก เธ เธฒเธขเนเธ 5 เธเธฒเธ—เธต</div>
         </div>
       </div>
     </section>
@@ -185,41 +191,41 @@
     <section class="home-section">
       <div class="section-header">
         <div>
-          <div class="section-eyebrow">รีวิว</div>
-          <h2 class="section-heading">ลูกค้าพูดถึงเรา 💬</h2>
+          <div class="section-eyebrow">เธฃเธตเธงเธดเธง</div>
+          <h2 class="section-heading">เธฅเธนเธเธเนเธฒเธเธนเธ”เธ–เธถเธเน€เธฃเธฒ ๐’ฌ</h2>
         </div>
       </div>
       <div class="reviews-grid">
         <div class="review-card">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">"สุ่มได้ Legendary ครั้งแรกเลย ดีใจมากกก ร้านส่งไวมาก"</p>
+          <div class="review-stars">โญโญโญโญโญ</div>
+          <p class="review-text">"เธชเธธเนเธกเนเธ”เน Legendary เธเธฃเธฑเนเธเนเธฃเธเน€เธฅเธข เธ”เธตเนเธเธกเธฒเธเธเธ เธฃเนเธฒเธเธชเนเธเนเธงเธกเธฒเธ"</p>
           <div class="review-author">
-            <div class="review-avatar">👤</div>
+            <div class="review-avatar">๐‘ค</div>
             <div>
-              <div class="review-name">ผู้ใช้ 8***2</div>
-              <div class="review-date">17 ม.ค. 2568</div>
+              <div class="review-name">เธเธฒเธขเธชเธกเธเธฒเธข เนเธเธ”เธต</div>
+              <div class="review-date">17 เธก.เธ. 2568</div>
             </div>
           </div>
         </div>
         <div class="review-card">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">"ซื้อไอดีมาหลายครั้งแล้ว ไม่เคยมีปัญหา แอดมินตอบไวมาก"</p>
+          <div class="review-stars">โญโญโญโญโญ</div>
+          <p class="review-text">"เธเธทเนเธญเนเธญเธ”เธตเธกเธฒเธซเธฅเธฒเธขเธเธฃเธฑเนเธเนเธฅเนเธง เนเธกเนเน€เธเธขเธกเธตเธเธฑเธเธซเธฒ เนเธญเธ”เธกเธดเธเธ•เธญเธเนเธงเธกเธฒเธ"</p>
           <div class="review-author">
-            <div class="review-avatar">👤</div>
+            <div class="review-avatar">๐‘ค</div>
             <div>
-              <div class="review-name">ผู้ใช้ 3***9</div>
-              <div class="review-date">13 ม.ค. 2568</div>
+              <div class="review-name">เธเธฒเธขเธเธดเธขเธฐ เนเธเธเธ”เธต</div>
+              <div class="review-date">13 เธก.เธ. 2568</div>
             </div>
           </div>
         </div>
         <div class="review-card">
-          <div class="review-stars">⭐⭐⭐⭐⭐</div>
-          <p class="review-text">"ราคาถูกที่สุดในตลาด เพชรได้เยอะมาก แนะนำเลย!"</p>
+          <div class="review-stars">โญโญโญโญโญ</div>
+          <p class="review-text">"เธฃเธฒเธเธฒเธ–เธนเธเธ—เธตเนเธชเธธเธ”เนเธเธ•เธฅเธฒเธ” เน€เธเธเธฃเนเธ”เนเน€เธขเธญเธฐเธกเธฒเธ เนเธเธฐเธเธณเน€เธฅเธข!"</p>
           <div class="review-author">
-            <div class="review-avatar">👤</div>
+            <div class="review-avatar">๐‘ค</div>
             <div>
-              <div class="review-name">ผู้ใช้ 5***3</div>
-              <div class="review-date">15 ม.ค. 2568</div>
+              <div class="review-name">เธ.เธช.เธกเธดเธเธ•เธฃเธฒ เธชเธงเธขเธเธฒเธก</div>
+              <div class="review-date">15 เธก.เธ. 2568</div>
             </div>
           </div>
         </div>
@@ -231,15 +237,15 @@
       <div class="cta-card">
         <div class="cta-glow"></div>
         <div class="cta-content">
-          <div class="cta-icon">📞</div>
-          <h2 class="cta-title">ติดต่อแอดมิน</h2>
-          <p class="cta-desc">มีคำถาม? ติดต่อเราได้ตลอด 24 ชั่วโมง</p>
+          <div class="cta-icon">๐“</div>
+          <h2 class="cta-title">เธ•เธดเธ”เธ•เนเธญเนเธญเธ”เธกเธดเธ</h2>
+          <p class="cta-desc">เธกเธตเธเธณเธ–เธฒเธก? เธ•เธดเธ”เธ•เนเธญเน€เธฃเธฒเนเธ”เนเธ•เธฅเธญเธ” 24 เธเธฑเนเธงเนเธกเธ</p>
           <div class="cta-channels">
             <a href="#" class="cta-btn cta-line">
-              <span>💬</span> Line: @nat888
+              <span>๐’ฌ</span> Line: @nat888
             </a>
             <a href="#" class="cta-btn cta-fb">
-              <span>📘</span> Facebook: NAT888 Shop
+              <span>๐“</span> Facebook: NAT888 Shop
             </a>
           </div>
         </div>
@@ -250,11 +256,13 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p><strong>NAT888</strong> — ร้านขายไอดีเกมอันดับ 1</p>
-    <p>ติดต่อ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
+    <p><strong>NAT888</strong> โ€” เธฃเนเธฒเธเธเธฒเธขเนเธญเธ”เธตเน€เธเธกเธญเธฑเธเธ”เธฑเธ 1</p>
+    <p>เธ•เธดเธ”เธ•เนเธญ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
   </footer>
 
   <script src="auth.js"></script>
   <script src="home.js"></script>
+  <script src="chatbot.js"></script>
 </body>
 </html>
+

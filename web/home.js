@@ -15,14 +15,14 @@ document.getElementById("btnLogout")?.addEventListener("click", () => {
 
 // ===== PRODUCTS DATA =====
 const PRODUCTS = [
-  { id: 1, name: "SKIN Common",    img: "image/1.jpg", rarity: "common",    chance: 40.0 },
-  { id: 2, name: "SKIN Uncommon",  img: "image/2.jpg", rarity: "uncommon",  chance: 25.0 },
-  { id: 3, name: "SKIN Rare",      img: "image/3.jpg", rarity: "rare",      chance: 15.0 },
-  { id: 4, name: "SKIN Rare+",     img: "image/4.jpg", rarity: "common",    chance: 8.0  },
-  { id: 5, name: "SKIN Epic",      img: "image/5.png", rarity: "epic",      chance: 4.0  },
-  { id: 6, name: "SKIN Legendary", img: "image/6.png", rarity: "legendary", chance: 2.0  },
-  { id: 7, name: "SKIN Legendary+",img: "image/7.png", rarity: "legendary", chance: 0.8  },
-  { id: 8, name: "Limited Edition",img: "image/8.png", rarity: "legendary", chance: 0.7  },
+  { id: 1, name: "SKIN Common",    img: "image/1.jpg", rarity: "common",    chance: 28.0, price: 29   },
+  { id: 2, name: "SKIN Uncommon",  img: "image/2.jpg", rarity: "uncommon",  chance: 18.0, price: 59   },
+  { id: 3, name: "SKIN Rare",      img: "image/3.jpg", rarity: "rare",      chance: 10.0, price: 99   },
+  { id: 4, name: "SKIN Rare+",     img: "image/4.jpg", rarity: "common",    chance: 6.0,  price: 149  },
+  { id: 5, name: "SKIN Epic",      img: "image/5.png", rarity: "epic",      chance: 4.0,  price: 299  },
+  { id: 6, name: "SKIN Legendary", img: "image/6.png", rarity: "legendary", chance: 2.0,  price: 599  },
+  { id: 7, name: "SKIN Legend+",   img: "image/7.png", rarity: "legendary", chance: 1.3,  price: 999  },
+  { id: 8, name: "Limited Edition",img: "image/8.png", rarity: "legendary", chance: 0.7,  price: 1990 },
 ];
 
 const RARITY_COLOR = {
@@ -48,8 +48,8 @@ function renderProducts() {
         <div class="product-rarity" style="color:${RARITY_COLOR[item.rarity]}">${item.rarity.toUpperCase()}</div>
         <div class="product-name">${item.name}</div>
         <div class="product-footer">
-          <span class="product-chance">โอกาส ${item.chance}%</span>
-          <button class="product-btn" onclick="event.preventDefault();window.location.href='index.html'">สุ่มเลย</button>
+          <span class="product-price">฿${item.price.toLocaleString()}</span>
+          <span class="product-chance">${item.chance}%</span>
         </div>
       </div>
     `;

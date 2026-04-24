@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAT888 โ€” เน€เธ•เธดเธกเน€เธเธฃเธ”เธดเธ•</title>
+  <link rel="icon" type="image/svg+xml" href="image/logo.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="topup.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-brand">
+        <img src="image/logo.svg" alt="NAT888" class="nav-logo-img" />
+        <span>NAT888</span>
+      </div>
+      <a href="home.html" class="nav-link"><span>๐ </span> เธซเธเนเธฒเนเธฃเธ</a>
+      <a href="index.html" class="nav-link"><span>๐ฐ</span> เธชเธธเนเธกเธชเธเธดเธ</a>
+      <a href="topup.html" class="nav-link active"><span>๐’</span> เน€เธ•เธดเธกเน€เธเธฃเธ”เธดเธ•</a>
+    </div>
+    <div class="nav-right">
+      <button class="btn-login" id="navLogin" onclick="window.location.href='/login'">เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ</button>
+      <button class="btn-register" id="navRegister" onclick="window.location.href='/register'">เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</button>
+      <div class="user-menu" id="userMenu" style="display:none;">
+        <div class="user-avatar">๐‘ค</div>
+        <div class="user-info">
+          <div class="user-name" id="userName"></div>
+          <div class="user-credits">๐’ฐ <span id="userCredits">0</span> เน€เธเธฃเธ”เธดเธ•</div>
+        </div>
+        <button class="btn-logout" id="btnLogout">เธญเธญเธ</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="topup-main">
+
+    <!-- HEADER -->
+    <div class="topup-hero">
+      <div class="topup-hero-bg"></div>
+      <div class="topup-hero-content">
+        <div class="topup-hero-icon">๐’</div>
+        <h1 class="topup-hero-title">เน€เธ•เธดเธกเน€เธเธฃเธ”เธดเธ•</h1>
+        <p class="topup-hero-sub">เน€เธฅเธทเธญเธเนเธเนเธเน€เธเธเธ—เธตเนเธ•เนเธญเธเธเธฒเธฃ เธเธณเธฃเธฐเน€เธเธดเธเธเนเธฒเธข เธฃเธฑเธเน€เธเธฃเธ”เธดเธ•เธ—เธฑเธเธ—เธต</p>
+        <div class="topup-balance-card" id="balanceCard" style="display:none;">
+          <span class="topup-balance-label">เน€เธเธฃเธ”เธดเธ•เธเธฑเธเธเธธเธเธฑเธ</span>
+          <span class="topup-balance-num" id="balanceNum">0</span>
+          <span class="topup-balance-unit">เน€เธเธฃเธ”เธดเธ•</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PACKAGES -->
+    <section class="topup-section">
+      <div class="topup-section-title">
+        <span>๐’</span> เน€เธฅเธทเธญเธเนเธเนเธเน€เธเธ
+      </div>
+      <div class="packages-grid" id="packagesGrid"></div>
+    </section>
+
+    <!-- PAYMENT METHOD -->
+    <section class="topup-section" id="paymentSection" style="display:none;">
+      <div class="topup-section-title">
+        <span>๐’ณ</span> เธเนเธญเธเธ—เธฒเธเธเธณเธฃเธฐเน€เธเธดเธ
+      </div>
+
+      <div class="selected-pkg" id="selectedPkg"></div>
+
+      <div class="payment-tabs">
+        <button class="pay-tab active" data-tab="promptpay" onclick="switchTab('promptpay')">
+          <span>๐“ฑ</span> PromptPay
+        </button>
+        <button class="pay-tab" data-tab="line" onclick="switchTab('line')">
+          <span>๐’ฌ</span> Line Pay
+        </button>
+        <button class="pay-tab" data-tab="truemoney" onclick="switchTab('truemoney')">
+          <span>๐ </span> TrueMoney
+        </button>
+      </div>
+
+      <!-- PromptPay -->
+      <div class="pay-content" id="tab-promptpay">
+        <div class="qr-wrap">
+          <div class="qr-box" id="qrBox">
+            <canvas id="qrCanvas" width="200" height="200"></canvas>
+          </div>
+          <div class="qr-info">
+            <div class="qr-name">NAT888 Shop</div>
+            <div class="qr-number">๐“ฑ 098-765-4321</div>
+            <div class="qr-amount" id="qrAmount">เธฟ0</div>
+          </div>
+        </div>
+        <div class="pay-steps">
+          <div class="pay-step"><span class="pay-step-num">1</span> เน€เธเธดเธ”เนเธญเธเธเธเธฒเธเธฒเธฃ โ’ เธชเนเธเธ QR</div>
+          <div class="pay-step"><span class="pay-step-num">2</span> เธ•เธฃเธงเธเธชเธญเธเธขเธญเธ”เน€เธเธดเธเนเธซเนเธ–เธนเธเธ•เนเธญเธ</div>
+          <div class="pay-step"><span class="pay-step-num">3</span> เธเธ”เธขเธทเธเธขเธฑเธเธเธฒเธฃเธเธณเธฃเธฐเน€เธเธดเธ</div>
+          <div class="pay-step"><span class="pay-step-num">4</span> เนเธเธเธชเธฅเธดเธเธชเนเธเนเธซเนเนเธญเธ”เธกเธดเธ</div>
+        </div>
+      </div>
+
+      <!-- Line Pay -->
+      <div class="pay-content" id="tab-line" style="display:none;">
+        <div class="contact-pay">
+          <div class="contact-pay-icon" style="background:#06c755;">๐’ฌ</div>
+          <div class="contact-pay-info">
+            <div class="contact-pay-name">Line: @nat888</div>
+            <div class="contact-pay-desc">เนเธเนเธเธขเธญเธ”เน€เธเธดเธเนเธฅเธฐเธเธทเนเธญเธเธนเนเนเธเนเธเธญเธเธเธธเธ“<br/>เนเธญเธ”เธกเธดเธเธเธฐเน€เธ•เธดเธกเน€เธเธฃเธ”เธดเธ•เนเธซเนเธ เธฒเธขเนเธ 5 เธเธฒเธ—เธต</div>
+          </div>
+          <a href="#" class="contact-pay-btn" style="background:#06c755;">เน€เธเธดเธ” Line</a>
+        </div>
+      </div>
+
+      <!-- TrueMoney -->
+      <div class="pay-content" id="tab-truemoney" style="display:none;">
+        <div class="contact-pay">
+          <div class="contact-pay-icon" style="background:#ff6600;">๐ </div>
+          <div class="contact-pay-info">
+            <div class="contact-pay-name">TrueMoney Wallet</div>
+            <div class="contact-pay-desc">เน€เธเธญเธฃเนเธฃเธฑเธเน€เธเธดเธ: <strong>098-765-4321</strong><br/>เนเธเธเธชเธฅเธดเธเธชเนเธเนเธซเนเนเธญเธ”เธกเธดเธเธ—เธฒเธ Line</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- slip upload -->
+      <div class="slip-section">
+        <div class="slip-title">๐“ เนเธเธเธชเธฅเธดเธเธเธฒเธฃเนเธญเธ</div>
+        <label class="slip-upload" id="slipLabel">
+          <input type="file" id="slipFile" accept="image/*" onchange="previewSlip(event)" style="display:none;" />
+          <div class="slip-placeholder" id="slipPlaceholder">
+            <span style="font-size:32px;">๐“ท</span>
+            <span>เธเธฅเธดเธเน€เธเธทเนเธญเธญเธฑเธเนเธซเธฅเธ”เธชเธฅเธดเธ</span>
+            <span style="font-size:12px;color:var(--muted);">เธฃเธญเธเธฃเธฑเธ JPG, PNG</span>
+          </div>
+          <img id="slipPreview" style="display:none;width:100%;border-radius:8px;" />
+        </label>
+        <button class="btn-confirm-pay" id="btnConfirmPay" onclick="confirmPayment()">
+          โ… เธขเธทเธเธขเธฑเธเธเธฒเธฃเธเธณเธฃเธฐเน€เธเธดเธ
+        </button>
+      </div>
+    </section>
+
+    <!-- HOW TO -->
+    <section class="topup-section">
+      <div class="topup-section-title"><span>โ“</span> เธงเธดเธเธตเน€เธ•เธดเธกเน€เธเธฃเธ”เธดเธ•</div>
+      <div class="howto-grid">
+        <div class="howto-card">
+          <div class="howto-num">1</div>
+          <div class="howto-icon">๐’</div>
+          <div class="howto-title">เน€เธฅเธทเธญเธเนเธเนเธเน€เธเธ</div>
+          <div class="howto-desc">เน€เธฅเธทเธญเธเธเธณเธเธงเธเน€เธเธฃเธ”เธดเธ•เธ—เธตเนเธ•เนเธญเธเธเธฒเธฃ</div>
+        </div>
+        <div class="howto-arrow">โ’</div>
+        <div class="howto-card">
+          <div class="howto-num">2</div>
+          <div class="howto-icon">๐’ณ</div>
+          <div class="howto-title">เธเธณเธฃเธฐเน€เธเธดเธ</div>
+          <div class="howto-desc">เธชเนเธเธ QR เธซเธฃเธทเธญเนเธญเธเธเนเธฒเธ Line</div>
+        </div>
+        <div class="howto-arrow">โ’</div>
+        <div class="howto-card">
+          <div class="howto-num">3</div>
+          <div class="howto-icon">โก</div>
+          <div class="howto-title">เธฃเธฑเธเน€เธเธฃเธ”เธดเธ•</div>
+          <div class="howto-desc">เน€เธเธฃเธ”เธดเธ•เน€เธเนเธฒเธเธฑเธเธเธตเธ เธฒเธขเนเธ 5 เธเธฒเธ—เธต</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SUCCESS MODAL -->
+  <div class="modal-overlay" id="successOverlay">
+    <div class="modal">
+      <div class="modal-icon">โ…</div>
+      <h2 class="modal-title" style="color:#66bb6a;">เธชเนเธเธชเธณเน€เธฃเนเธ!</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:20px;position:relative;z-index:1;">
+        เนเธญเธ”เธกเธดเธเนเธ”เนเธฃเธฑเธเธชเธฅเธดเธเธเธญเธเธเธธเธ“เนเธฅเนเธง<br/>เน€เธเธฃเธ”เธดเธ•เธเธฐเน€เธเนเธฒเธเธฑเธเธเธตเธ เธฒเธขเนเธ 5 เธเธฒเธ—เธต
+      </p>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:24px;position:relative;z-index:1;">
+        เธซเธฒเธเธฃเธญเธเธฒเธเธเธงเนเธฒ 10 เธเธฒเธ—เธต เธ•เธดเธ”เธ•เนเธญ Line: <strong style="color:#fff;">@nat888</strong>
+      </p>
+      <button class="btn-register" onclick="document.getElementById('successOverlay').classList.remove('show')">เธ•เธเธฅเธ</button>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>NAT888</strong> โ€” เธฃเนเธฒเธเธเธฒเธขเนเธญเธ”เธตเน€เธเธกเธญเธฑเธเธ”เธฑเธ 1</p>
+    <p>เธ•เธดเธ”เธ•เนเธญ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="topup.js"></script>
+</body>
+</html>
+

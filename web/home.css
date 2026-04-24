@@ -478,26 +478,15 @@
   justify-content: space-between;
 }
 
+.product-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--gold);
+}
+
 .product-chance {
   font-size: 12px;
   color: var(--muted);
-}
-
-.product-btn {
-  background: linear-gradient(135deg, var(--red-dark), var(--red));
-  border: none;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  font-family: inherit;
-  padding: 6px 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-.product-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(229,57,53,0.4);
 }
 
 /* STEPS */

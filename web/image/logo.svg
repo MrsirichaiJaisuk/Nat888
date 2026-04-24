@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1a0a0a"/>
+      <stop offset="100%" style="stop-color:#2d0808"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffe066"/>
+      <stop offset="50%" style="stop-color:#ffd700"/>
+      <stop offset="100%" style="stop-color:#f9a825"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff5252"/>
+      <stop offset="100%" style="stop-color:#b71c1c"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+    <clipPath id="roundRect">
+      <rect width="120" height="120" rx="26" ry="26"/>
+    </clipPath>
+  </defs>
+
+  <!-- Background -->
+  <rect width="120" height="120" rx="26" ry="26" fill="url(#bgGrad)"/>
+
+  <!-- Red accent top-left -->
+  <circle cx="0" cy="0" r="60" fill="rgba(229,57,53,0.12)" clip-path="url(#roundRect)"/>
+
+  <!-- Gold accent bottom-right -->
+  <circle cx="120" cy="120" r="50" fill="rgba(255,215,0,0.07)" clip-path="url(#roundRect)"/>
+
+  <!-- Border -->
+  <rect width="120" height="120" rx="26" ry="26" fill="none" stroke="rgba(255,215,0,0.25)" stroke-width="1.5"/>
+
+  <!-- N letter -->
+  <text
+    x="18"
+    y="78"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-size="62"
+    font-weight="900"
+    fill="url(#goldGrad)"
+    filter="url(#glow)"
+    letter-spacing="-2"
+  >N</text>
+
+  <!-- 888 small -->
+  <text
+    x="68"
+    y="62"
+    font-family="'Arial Black', 'Impact', sans-serif"
+    font-size="22"
+    font-weight="900"
+    fill="url(#redGrad)"
+    filter="url(#shadow)"
+  >888</text>
+
+  <!-- AT small line -->
+  <text
+    x="68"
+    y="80"
+    font-family="'Arial', sans-serif"
+    font-size="11"
+    font-weight="700"
+    fill="rgba(255,255,255,0.5)"
+    letter-spacing="2"
+  >NAT</text>
+
+  <!-- bottom gold line -->
+  <rect x="16" y="90" width="88" height="2.5" rx="1.5" fill="url(#goldGrad)" opacity="0.7"/>
+
+  <!-- small diamond accent -->
+  <polygon points="60,96 64,101 60,106 56,101" fill="url(#goldGrad)" opacity="0.8"/>
+</svg>
