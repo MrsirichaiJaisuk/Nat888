@@ -3,18 +3,11 @@
     { "source": "/",          "destination": "/web/home.html"     },
     { "source": "/home",      "destination": "/web/home.html"     },
     { "source": "/spin",      "destination": "/web/index.html"    },
+    { "source": "/shop",      "destination": "/web/shop.html"     },
     { "source": "/topup",     "destination": "/web/topup.html"    },
     { "source": "/market",    "destination": "/web/market.html"   },
     { "source": "/login",     "destination": "/web/login.html"    },
     { "source": "/register",  "destination": "/web/register.html" },
     { "source": "/(.*)",      "destination": "/web/$1"            }
-  ],
-  "headers": [
-    {
-      "source": "/web/(.*)",
-      "headers": [
-        { "key": "Cache-Control", "value": "public, max-age=3600" }
-      ]
-    }
   ]
 }

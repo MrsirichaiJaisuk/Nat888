@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NAT888 — หมวดหมู่ทั้งหมด</title>
+  <link rel="icon" type="image/svg+xml" href="image/logo.svg" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="shop.css" />
+  <link rel="stylesheet" href="chatbot.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-left">
+      <div class="nav-brand">
+        <img src="image/logo.svg" alt="NAT888" class="nav-logo-img" />
+        <span>NAT888</span>
+      </div>
+      <a href="home.html" class="nav-link"><span>🏠</span> หน้าแรก</a>
+      <a href="shop.html" class="nav-link active"><span>🛒</span> สินค้า</a>
+      <a href="market.html" class="nav-link"><span>🏪</span> ตลาด</a>
+      <a href="topup.html" class="nav-link"><span>💎</span> เติมเงิน</a>
+    </div>
+    <div class="nav-right">
+      <div class="search-box">
+        <span>🔍</span>
+        <input type="text" id="searchInput" placeholder="ค้นหาสินค้า..." oninput="filterProducts()" />
+      </div>
+      <button class="btn-login" id="navLogin" onclick="window.location.href='login.html'">เข้าสู่ระบบ</button>
+      <button class="btn-register" id="navRegister" onclick="window.location.href='register.html'">สมัครสมาชิก</button>
+      <div class="user-menu" id="userMenu" style="display:none;">
+        <div class="user-avatar">👤</div>
+        <div class="user-info">
+          <div class="user-name" id="userName"></div>
+          <div class="user-credits">💰 <span id="userCredits">0</span> เครดิต</div>
+        </div>
+        <button class="btn-logout" id="btnLogout">ออก</button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="shop-main">
+
+    <!-- HEADER -->
+    <div class="shop-header">
+      <div class="shop-header-bg"></div>
+      <div class="shop-header-content">
+        <div class="shop-header-icon">🛒</div>
+        <div>
+          <div class="shop-header-sub">SHOP — สินค้าทั้งหมด</div>
+          <h1 class="shop-header-title">หมวดหมู่ทั้งหมด</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <div class="filter-label">กรองตาม:</div>
+      <div class="filter-tabs" id="filterTabs">
+        <button class="filter-tab active" data-rarity="all" onclick="setFilter('all')">✨ ทั้งหมด</button>
+        <button class="filter-tab" data-rarity="common" onclick="setFilter('common')">⬜ Common</button>
+        <button class="filter-tab" data-rarity="uncommon" onclick="setFilter('uncommon')">🟩 Uncommon</button>
+        <button class="filter-tab" data-rarity="rare" onclick="setFilter('rare')">🟦 Rare</button>
+        <button class="filter-tab" data-rarity="epic" onclick="setFilter('epic')">🟪 Epic</button>
+        <button class="filter-tab" data-rarity="legendary" onclick="setFilter('legendary')">🟨 Legendary</button>
+      </div>
+      <div class="sort-wrap">
+        <select id="sortSelect" onchange="filterProducts()" class="sort-select">
+          <option value="default">เรียงตาม: ค่าเริ่มต้น</option>
+          <option value="price-asc">ราคา: ต่ำ → สูง</option>
+          <option value="price-desc">ราคา: สูง → ต่ำ</option>
+          <option value="chance-desc">โอกาส: มาก → น้อย</option>
+          <option value="chance-asc">โอกาส: น้อย → มาก</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- RESULT COUNT -->
+    <div class="result-count" id="resultCount">แสดง 0 รายการ</div>
+
+    <!-- PRODUCT GRID -->
+    <div class="shop-grid" id="shopGrid"></div>
+
+    <!-- EMPTY STATE -->
+    <div class="shop-empty" id="shopEmpty" style="display:none;">
+      <div style="font-size:56px;margin-bottom:16px;">🔍</div>
+      <div style="font-size:18px;font-weight:700;color:#fff;margin-bottom:8px;">ไม่พบสินค้า</div>
+      <div style="font-size:14px;color:var(--muted);">ลองเปลี่ยนคำค้นหาหรือตัวกรองดูนะครับ</div>
+    </div>
+
+  </main>
+
+  <!-- ITEM DETAIL MODAL -->
+  <div class="modal-overlay" id="itemOverlay">
+    <div class="modal item-modal">
+      <button onclick="closeItemModal()" style="position:absolute;top:16px;right:16px;background:none;border:none;color:#8888aa;font-size:20px;cursor:pointer;z-index:10;">✕</button>
+      <div class="item-modal-img">
+        <img id="itemModalImg" src="" alt="" />
+      </div>
+      <div class="item-modal-body">
+        <div class="item-modal-rarity" id="itemModalRarity"></div>
+        <h2 class="item-modal-name" id="itemModalName"></h2>
+        <div class="item-modal-stats">
+          <div class="item-stat">
+            <div class="item-stat-label">ราคา</div>
+            <div class="item-stat-val" id="itemModalPrice" style="color:var(--gold);"></div>
+          </div>
+          <div class="item-stat">
+            <div class="item-stat-label">โอกาสได้รับ</div>
+            <div class="item-stat-val" id="itemModalChance"></div>
+          </div>
+        </div>
+        <div class="item-modal-desc" id="itemModalDesc"></div>
+        <button class="btn-spin" style="width:100%;margin-top:16px;font-size:15px;padding:14px;" onclick="window.location.href='index.html'">
+          🎰 ไปสุ่มเลย
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p><strong>NAT888</strong> — ร้านขายไอดีเกมอันดับ 1</p>
+    <p>ติดต่อ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
+  </footer>
+
+  <script src="auth.js"></script>
+  <script src="chatbot.js"></script>
+  <script>
+    // ===== AUTH =====
+    const session = Auth.getSession();
+    if (session) {
+      document.getElementById('navLogin').style.display = 'none';
+      document.getElementById('navRegister').style.display = 'none';
+      document.getElementById('userMenu').style.display = 'flex';
+      const nameEl = document.getElementById('userName');
+      if (session.isAdmin) {
+        nameEl.innerHTML = `${session.username} <span style="background:#e53935;color:#fff;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:700;">ADMIN</span>`;
+      } else {
+        nameEl.textContent = session.username;
+      }
+      const bal = Auth.getBalance(session.userId);
+      document.getElementById('userCredits').textContent = bal === Infinity ? '∞' : bal;
+    }
+    document.getElementById('btnLogout')?.addEventListener('click', () => {
+      Auth.logout(); location.href = 'home.html';
+    });
+
+    // ===== DATA =====
+    const ITEMS = [
+      { id: 1, name: 'SKIN Common',    rarity: 'common',    emoji: '🎮', img: 'image/1.jpg', chance: 28.0, price: 29,   desc: 'สกินระดับ Common เหมาะสำหรับผู้เริ่มต้น' },
+      { id: 2, name: 'SKIN Uncommon',  rarity: 'uncommon',  emoji: '💪', img: 'image/2.jpg', chance: 18.0, price: 59,   desc: 'สกินระดับ Uncommon หายากกว่า Common' },
+      { id: 3, name: 'SKIN Rare',      rarity: 'rare',      emoji: '💎', img: 'image/3.jpg', chance: 10.0, price: 99,   desc: 'สกินระดับ Rare หายากและสวยงาม' },
+      { id: 4, name: 'SKIN Rare+',     rarity: 'common',    emoji: '💎', img: 'image/4.jpg', chance: 6.0,  price: 149,  desc: 'สกินระดับ Rare+ พิเศษกว่า Rare ธรรมดา' },
+      { id: 5, name: 'SKIN Epic',      rarity: 'epic',      emoji: '💎', img: 'image/5.png', chance: 4.0,  price: 299,  desc: 'สกินระดับ Epic หายากมาก ดีไซน์สุดเท่' },
+      { id: 6, name: 'SKIN Legendary', rarity: 'legendary', emoji: '👑', img: 'image/6.png', chance: 2.0,  price: 599,  desc: 'สกินระดับ Legendary หายากที่สุด สวยงามมาก' },
+      { id: 7, name: 'SKIN Legend+',   rarity: 'legendary', emoji: '💎', img: 'image/7.png', chance: 1.3,  price: 999,  desc: 'สกินระดับ Legendary+ หายากกว่า Legendary' },
+      { id: 8, name: 'Limited Edition',rarity: 'legendary', emoji: '🔥', img: 'image/8.png', chance: 0.7,  price: 1990, desc: 'สกิน Limited Edition หายากที่สุดในเกม!' },
+    ];
+
+    const RARITY_COLOR = {
+      common: '#aaa', uncommon: '#81c784', rare: '#64b5f6',
+      epic: '#ce93d8', legendary: '#ffd700',
+    };
+
+    let currentFilter = 'all';
+    let currentSearch = '';
+
+    // ===== FILTER =====
+    function setFilter(rarity) {
+      currentFilter = rarity;
+      document.querySelectorAll('.filter-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.rarity === rarity);
+      });
+      filterProducts();
+    }
+
+    function filterProducts() {
+      currentSearch = document.getElementById('searchInput').value.toLowerCase();
+      const sort = document.getElementById('sortSelect').value;
+
+      let filtered = ITEMS.filter(item => {
+        const matchRarity = currentFilter === 'all' || item.rarity === currentFilter;
+        const matchSearch = item.name.toLowerCase().includes(currentSearch) || item.rarity.includes(currentSearch);
+        return matchRarity && matchSearch;
+      });
+
+      // sort
+      if (sort === 'price-asc')    filtered.sort((a,b) => a.price - b.price);
+      if (sort === 'price-desc')   filtered.sort((a,b) => b.price - a.price);
+      if (sort === 'chance-desc')  filtered.sort((a,b) => b.chance - a.chance);
+      if (sort === 'chance-asc')   filtered.sort((a,b) => a.chance - b.chance);
+
+      renderGrid(filtered);
+    }
+
+    // ===== RENDER =====
+    function renderGrid(items) {
+      const grid = document.getElementById('shopGrid');
+      const empty = document.getElementById('shopEmpty');
+      const count = document.getElementById('resultCount');
+
+      count.textContent = `แสดง ${items.length} รายการ`;
+
+      if (items.length === 0) {
+        grid.innerHTML = '';
+        empty.style.display = 'flex';
+        return;
+      }
+      empty.style.display = 'none';
+      grid.innerHTML = '';
+
+      items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'shop-card';
+        card.onclick = () => openItemModal(item);
+        card.innerHTML = `
+          <div class="shop-card-img">
+            <img src="${item.img}" alt="${item.name}" />
+            <div class="shop-card-rarity" style="color:${RARITY_COLOR[item.rarity]};border-color:${RARITY_COLOR[item.rarity]}40;background:${RARITY_COLOR[item.rarity]}15;">
+              ${item.rarity.toUpperCase()}
+            </div>
+          </div>
+          <div class="shop-card-body">
+            <div class="shop-card-name">${item.emoji} ${item.name}</div>
+            <div class="shop-card-chance">โอกาส ${item.chance}%</div>
+            <div class="shop-card-footer">
+              <div class="shop-card-price">฿${item.price.toLocaleString()}</div>
+              <button class="shop-card-btn" onclick="event.stopPropagation();window.location.href='index.html'">สุ่มเลย 🎰</button>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    // ===== ITEM MODAL =====
+    function openItemModal(item) {
+      document.getElementById('itemModalImg').src = item.img;
+      document.getElementById('itemModalRarity').textContent = item.rarity.toUpperCase();
+      document.getElementById('itemModalRarity').style.color = RARITY_COLOR[item.rarity];
+      document.getElementById('itemModalName').textContent = `${item.emoji} ${item.name}`;
+      document.getElementById('itemModalPrice').textContent = `฿${item.price.toLocaleString()}`;
+      document.getElementById('itemModalChance').textContent = `${item.chance}%`;
+      document.getElementById('itemModalDesc').textContent = item.desc;
+      document.getElementById('itemOverlay').classList.add('show');
+    }
+    function closeItemModal() {
+      document.getElementById('itemOverlay').classList.remove('show');
+    }
+    document.getElementById('itemOverlay').addEventListener('click', e => {
+      if (e.target === e.currentTarget) closeItemModal();
+    });
+
+    // ===== INIT =====
+    filterProducts();
+  </script>
+</body>
+</html>

@@ -1,63 +1,60 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="th">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NAT888 โ€” เธ•เธฅเธฒเธ”เธเธทเนเธญเธเธฒเธข</title>
+  <title>NAT888 — ตลาดซื้อขาย</title>
   <link rel="icon" type="image/svg+xml" href="image/logo.svg" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="market.css" />
+  <link rel="stylesheet" href="chatbot.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="nav-left">
       <div class="nav-brand">
         <img src="image/logo.svg" alt="NAT888" class="nav-logo-img" />
         <span>NAT888</span>
       </div>
-      <a href="home.html" class="nav-link"><span>๐ </span> เธซเธเนเธฒเนเธฃเธ</a>
-      <a href="index.html" class="nav-link"><span>๐ฐ</span> เธชเธธเนเธกเธชเธเธดเธ</a>
-      <a href="market.html" class="nav-link active"><span>๐ช</span> เธ•เธฅเธฒเธ”</a>
-      <a href="topup.html" class="nav-link"><span>๐’</span> เน€เธ•เธดเธกเน€เธเธฃเธ”เธดเธ•</a>
+      <a href="home.html" class="nav-link"><span>🏠</span> หน้าแรก</a>
+      <a href="index.html" class="nav-link"><span>🎰</span> สุ่มสกิน</a>
+      <a href="market.html" class="nav-link active"><span>🏪</span> ตลาด</a>
+      <a href="topup.html" class="nav-link"><span>💎</span> เติมเครดิต</a>
     </div>
     <div class="nav-right">
-      <button class="btn-login" id="navLogin" onclick="window.location.href='/login'">เน€เธเนเธฒเธชเธนเนเธฃเธฐเธเธ</button>
-      <button class="btn-register" id="navRegister" onclick="window.location.href='/register'">เธชเธกเธฑเธเธฃเธชเธกเธฒเธเธดเธ</button>
+      <button class="btn-login" id="navLogin" onclick="window.location.href='login.html'">เข้าสู่ระบบ</button>
+      <button class="btn-register" id="navRegister" onclick="window.location.href='register.html'">สมัครสมาชิก</button>
       <div class="user-menu" id="userMenu" style="display:none;">
-        <div class="user-avatar">๐‘ค</div>
+        <div class="user-avatar">👤</div>
         <div class="user-info">
           <div class="user-name" id="userName"></div>
-          <div class="user-credits">๐’ฐ <span id="userCredits">0</span> เน€เธเธฃเธ”เธดเธ•</div>
+          <div class="user-credits">💰 <span id="userCredits">0</span> เครดิต</div>
         </div>
-        <button class="btn-bag" onclick="window.location.href='/spin'" title="เธเธฃเธฐเน€เธเนเธฒ">๐’</button>
-        <button class="btn-logout" id="btnLogout">เธญเธญเธ</button>
+        <button class="btn-bag" onclick="window.location.href='index.html'" title="กระเป๋า">🎒</button>
+        <button class="btn-logout" id="btnLogout">ออก</button>
       </div>
     </div>
   </nav>
 
   <main class="market-main">
 
-    <!-- HEADER -->
     <div class="market-hero">
-      <div class="market-hero-icon">๐ช</div>
+      <div class="market-hero-icon">🏪</div>
       <div>
         <div class="market-hero-sub">MARKETPLACE</div>
-        <h1 class="market-hero-title">เธ•เธฅเธฒเธ”เธเธทเนเธญเธเธฒเธขเธชเธเธดเธ</h1>
+        <h1 class="market-hero-title">ตลาดซื้อขายสกิน</h1>
       </div>
-      <button class="btn-sell" id="btnOpenSell" onclick="openSellModal()">+ เธงเธฒเธเธเธฒเธข / เนเธฅเธ</button>
+      <button class="btn-sell" id="btnOpenSell" onclick="openSellModal()">+ วางขาย / แลก</button>
     </div>
 
-    <!-- TABS -->
     <div class="market-tabs">
-      <button class="market-tab active" onclick="switchTab('sale')">๐’ เธเธทเนเธญเธเธฒเธข</button>
-      <button class="market-tab" onclick="switchTab('mine')">๐“ฆ เธเธญเธเธเธฑเธเธ—เธตเนเธงเธฒเธเธเธฒเธข</button>
-      <button class="market-tab" onclick="switchTab('inbox')">๐“ฌ เธเธณเธเธญเนเธฅเธ <span id="inboxBadge" style="display:none;background:#e53935;color:#fff;font-size:10px;padding:1px 7px;border-radius:50px;margin-left:4px;">!</span></button>
-      <button class="market-tab" onclick="switchTab('sent')">๐“ค เธ—เธตเนเธชเนเธเนเธ</button>
+      <button class="market-tab active" onclick="switchTab('sale')">🛒 ซื้อขาย</button>
+      <button class="market-tab" onclick="switchTab('mine')">📦 ของฉันที่วางขาย</button>
+      <button class="market-tab" onclick="switchTab('inbox')">📬 คำขอแลก</button>
+      <button class="market-tab" onclick="switchTab('sent')">📤 ที่ส่งไป</button>
     </div>
 
-    <!-- LISTINGS -->
     <div id="listingsContainer"></div>
 
   </main>
@@ -65,36 +62,36 @@
   <!-- SELL MODAL -->
   <div class="modal-overlay" id="sellOverlay">
     <div class="modal market-modal">
-      <div class="modal-icon">๐ช</div>
-      <h2 class="modal-title" style="color:var(--gold);">เธงเธฒเธเธเธฒเธข / เนเธฅเธ</h2>
+      <div class="modal-icon">🏪</div>
+      <h2 class="modal-title" style="color:var(--gold);">วางขาย / แลก</h2>
 
       <div class="sell-type-tabs">
-        <button class="sell-type-btn active" id="typeSale" onclick="setSellType('sale')">๐’ฐ เธเธฒเธข</button>
-        <button class="sell-type-btn" id="typeTrade" onclick="setSellType('trade')">๐” เนเธฅเธ</button>
+        <button class="sell-type-btn active" id="typeSale" onclick="setSellType('sale')">💰 ขาย</button>
+        <button class="sell-type-btn" id="typeTrade" onclick="setSellType('trade')">🔄 แลก</button>
       </div>
 
       <div style="margin-bottom:16px;position:relative;z-index:1;">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:8px;">เน€เธฅเธทเธญเธเธชเธเธดเธเธเธฒเธเธเธฃเธฐเน€เธเนเธฒ</label>
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:8px;">เลือกสกินจากกระเป๋า</label>
         <div id="invPickerGrid" class="inv-picker-grid"></div>
       </div>
 
       <div id="saleFields">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">เธฃเธฒเธเธฒเธเธฒเธข (เน€เธเธฃเธ”เธดเธ•)</label>
-        <input type="number" id="sellPrice" min="1" placeholder="เนเธชเนเธฃเธฒเธเธฒ..." style="width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:#fff;font-size:14px;font-family:inherit;outline:none;margin-bottom:8px;" />
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">ราคาขาย (เครดิต)</label>
+        <input type="number" id="sellPrice" min="1" placeholder="ใส่ราคา..." style="width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:#fff;font-size:14px;font-family:inherit;outline:none;margin-bottom:8px;" />
         <div style="font-size:12px;color:var(--muted);position:relative;z-index:1;">
-          ๐’ก เธฃเธฐเธเธเธซเธฑเธ 5% โ€” เธเธธเธ“เธเธฐเนเธ”เนเธฃเธฑเธ <strong id="sellerGetPreview" style="color:var(--gold);">0</strong> เน€เธเธฃเธ”เธดเธ•
+          💡 ระบบหัก 5% — คุณจะได้รับ <strong id="sellerGetPreview" style="color:var(--gold);">0</strong> เครดิต
         </div>
       </div>
 
       <div id="tradeFields" style="display:none;">
-        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">เธเธทเนเธญเธเธนเนเนเธเนเธ—เธตเนเธ•เนเธญเธเธเธฒเธฃเธชเนเธเธชเธเธดเธเนเธซเน</label>
-        <input type="text" id="toUsername" placeholder="เนเธชเนเธเธทเนเธญ user เน€เธเนเธ somchai123" style="width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:#fff;font-size:14px;font-family:inherit;outline:none;" />
-        <div style="font-size:12px;color:var(--muted);margin-top:8px;position:relative;z-index:1;">๐’ก เธชเธเธดเธเธเธฐเธชเนเธเธ•เธฃเธเธ–เธถเธ inbox เธเธญเธเธเธนเนเนเธเนเธเธฑเนเธ เธฃเธญเนเธซเนเน€เธเธฒเธขเธทเธเธขเธฑเธเธฃเธฑเธ</div>
+        <label style="font-size:13px;color:var(--muted);display:block;margin-bottom:6px;">ชื่อผู้ใช้ที่ต้องการส่งสกินให้</label>
+        <input type="text" id="toUsername" placeholder="ใส่ชื่อ user เช่น somchai123" style="width:100%;background:var(--dark3);border:1px solid var(--border);border-radius:10px;padding:12px 16px;color:#fff;font-size:14px;font-family:inherit;outline:none;" />
+        <div style="font-size:12px;color:var(--muted);margin-top:8px;position:relative;z-index:1;">💡 สกินจะส่งตรงถึง inbox ของผู้ใช้นั้น รอให้เขายืนยันรับ</div>
       </div>
 
       <div style="display:flex;gap:10px;margin-top:20px;position:relative;z-index:1;">
-        <button class="btn-login" style="flex:1;" onclick="closeSellModal()">เธขเธเน€เธฅเธดเธ</button>
-        <button class="btn-register" style="flex:2;" onclick="confirmList()">โ… เธชเนเธ / เธงเธฒเธเธเธฒเธข</button>
+        <button class="btn-login" style="flex:1;" onclick="closeSellModal()">ยกเลิก</button>
+        <button class="btn-register" style="flex:2;" onclick="confirmList()">✅ ส่ง / วางขาย</button>
       </div>
     </div>
   </div>
@@ -102,18 +99,23 @@
   <!-- BUY CONFIRM MODAL -->
   <div class="modal-overlay" id="buyOverlay">
     <div class="modal market-modal">
-      <div class="modal-icon" id="buyIcon">๐’</div>
-      <h2 class="modal-title" id="buyTitle" style="color:var(--gold);">เธขเธทเธเธขเธฑเธเธเธฒเธฃเธเธทเนเธญ</h2>
+      <div class="modal-icon" id="buyIcon">🛒</div>
+      <h2 class="modal-title" id="buyTitle" style="color:var(--gold);">ยืนยันการซื้อ</h2>
       <div id="buyContent" style="position:relative;z-index:1;margin-bottom:20px;"></div>
       <div style="display:flex;gap:10px;position:relative;z-index:1;">
-        <button class="btn-login" style="flex:1;" onclick="closeBuyModal()">เธขเธเน€เธฅเธดเธ</button>
-        <button class="btn-register" style="flex:2;" id="buyConfirmBtn">เธขเธทเธเธขเธฑเธ</button>
+        <button class="btn-login" style="flex:1;" onclick="closeBuyModal()">ยกเลิก</button>
+        <button class="btn-register" style="flex:2;" id="buyConfirmBtn">ยืนยัน</button>
       </div>
     </div>
   </div>
 
+  <footer class="footer">
+    <p><strong>NAT888</strong> — ร้านขายไอดีเกมอันดับ 1</p>
+    <p>ติดต่อ: Line <strong>@nat888</strong> | Facebook: <strong>NAT888 Shop</strong></p>
+  </footer>
+
   <script src="auth.js"></script>
   <script src="market.js"></script>
+  <script src="chatbot.js"></script>
 </body>
 </html>
-
