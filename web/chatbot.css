@@ -283,6 +283,6 @@
 
 /* mobile */
 @media (max-width: 480px) {
-  #chatbotWidget { bottom: 16px; right: 16px; }
-  .chat-window { width: calc(100vw - 32px); right: 0; }
+  #chatbotWidget { bottom: 72px; right: 16px; }
+  .chat-window { width: calc(100vw - 32px); right: 0; bottom: 68px; }
 }

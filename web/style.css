@@ -1225,3 +1225,15 @@ body {
 .mobile-nav-item .mn-icon { font-size: 20px; line-height: 1; }
 .mobile-nav-item.active { color: var(--red); }
 .mobile-nav-item:hover  { color: var(--text); }
+
+/* ขยับ chatbot ขึ้นเมื่ออยู่บนมือถือ */
+@media (max-width: 480px) {
+  #chatbotWidget {
+    bottom: 72px !important;
+    right: 16px !important;
+  }
+  /* เพิ่ม padding ล่างให้ content ไม่ถูก bottom nav บัง */
+  body { padding-bottom: 60px; }
+  .main { padding-bottom: 24px !important; }
+  .footer { margin-bottom: 0; }
+}
